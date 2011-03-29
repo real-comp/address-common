@@ -6,7 +6,7 @@ import java.io.Serializable;
  *
  * @author BGoering
  */
-public class Address extends StreetAddress implements Serializable {
+public class Address implements Serializable {
 
     private StreetAddress streetAddress;
     private String city;
@@ -84,16 +84,65 @@ public class Address extends StreetAddress implements Serializable {
         return hash;
     }
 
-    /*
-    public StreetAddress getStreetAddress() {
-        return streetAddress;
+    public String getHouseNum() {
+        return streetAddress.getHouseNum();
     }
 
-    public void setStreetAddress(StreetAddress streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setHouseNum(String houseNum) {
+        streetAddress.setHouseNum(houseNum);
     }
-     * 
-     */
+
+    public String getPreDir() {
+        return streetAddress.getPreDir();
+    }
+
+    public void setPreDir(String preDir) {
+        streetAddress.setPreDir(preDir);
+    }
+
+    public String getStreet() {
+        return streetAddress.getStreet();
+    }
+
+    public void setStreet(String street) {
+        streetAddress.setStreet(street);
+    }
+
+    public String getStreetSuffix() {
+        return streetAddress.getStreetSuffix();
+    }
+
+    public void setStreetSuffix(String streetSuffix) {
+        streetAddress.setStreetSuffix(streetSuffix);
+    }
+
+    public String getPostDir() {
+        return streetAddress.getPostDir();
+    }
+
+    public void setPostDir(String postDir) {
+        streetAddress.setPostDir(postDir);
+    }
+
+    public String getUnitAbbrev() {
+        return streetAddress.getUnitAbbrev();
+    }
+
+    public void setUnitAbbrev(String unitAbbrev) {
+        streetAddress.setUnitAbbrev(unitAbbrev);
+    }
+
+    public String getUnit() {
+        return streetAddress.getUnit();
+    }
+
+    public void setUnit(String unit) {
+        streetAddress.setUnit(unit);
+    }
+
+    public String getStreetAddress() {
+        return streetAddress.toString();
+    }
 
     public String getCity() {
         return city;
@@ -111,12 +160,24 @@ public class Address extends StreetAddress implements Serializable {
         this.state = state;
     }
 
-    public ZipCode getZipCode() {
-        return zipCode;
+    public String getZip() {
+        return zipCode.getZip();
     }
 
-    public void setZipCode(ZipCode zipCode) {
-        this.zipCode = zipCode;
+    public void setZip(String zip) {
+        zipCode.setZip(zip);
+    }
+
+    public String getZip4() {
+        return zipCode.getZip4();
+    }
+
+    public void setZip4(String zip4) {
+        zipCode.setZip(zip4);
+    }
+
+    public String getZipCode() {
+        return zipCode.toString();
     }
 
     public String getCrrt() {
@@ -127,12 +188,20 @@ public class Address extends StreetAddress implements Serializable {
         this.crrt = crrt;
     }
 
-    public Barcode getBarcode() {
-        return barcode;
+    public String getBarcode() {
+        return barcode.getBarcode();
     }
 
-    public void setBarcode(Barcode barcode) {
-        this.barcode = barcode;
+    public void setBarcode(String barcd) {
+        barcode.setBarcode(barcd);
+    }
+
+    public String getImbarcode() {
+        return barcode.getImbarcode();
+    }
+
+    public void setImbarcode(String imbarcode) {
+        barcode.setImbarcode(imbarcode);
     }
 
     public String getCounty() {
@@ -143,20 +212,48 @@ public class Address extends StreetAddress implements Serializable {
         this.county = county;
     }
 
-    public Fips getFips() {
-        return fips;
+    public String getFipsCounty() {
+        return fips.getFipsCounty();
     }
 
-    public void setFips(Fips fips) {
-        this.fips = fips;
+    public void setFipsCounty(String fipsCounty) {
+        fips.setFipsCounty(fipsCounty);
     }
 
-    public Geolocation getGeo() {
-        return geo;
+    public String getFipsState() {
+        return fips.getFipsState();
     }
 
-    public void setGeo(Geolocation geo) {
-        this.geo = geo;
+    public void setFipsState(String fipsState) {
+        fips.setFipsState(fipsState);
+    }
+
+    public String getFips() {
+        return fips.toString();
+    }
+
+    public double getLatitude() {
+        return geo.getLatitude();
+    }
+
+    public void setLatitude(double latitude) {
+        geo.setLatitude(latitude);
+    }
+
+    public double getLongitude() {
+        return geo.getLongitude();
+    }
+
+    public void setLongitude(double longitude) {
+        geo.setLongitude(longitude);
+    }
+
+    public LatLongAccuracy getLatLongAccuracy() {
+        return geo.getLatLongAccuracy();
+    }
+
+    public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy) {
+        geo.setLatLongAccuracy(latLongAccuracy);
     }
 
     public AddressType getAddressType() {
