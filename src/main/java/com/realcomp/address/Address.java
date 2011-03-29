@@ -7,68 +7,91 @@ import java.io.Serializable;
  * @author BGoering
  */
 public class Address implements Serializable {
-    private String name1;
-    private String name2;
-    private String streetAddress1;
-    private String streetAddress2;
+
+    private StreetAddress streetAddress;
     private String city;
     private String state;
-    private String zip;
-    private String zipPlus4;
-    private StringBuilder addressString = new StringBuilder();
+    private ZipCode zipCode;
+    private String crrt;
+    private Barcode barcode;
+    private String county;
+    private Fips fips;
+    private Geolocation geo;
+    private AddressType addressType;
+    private AddressQuality addressQuality;
 
-    public String getFullAddress() {
-        if (streetAddress1 != null && !streetAddress1.isEmpty())
-            addressString.append(streetAddress1);
-        if (streetAddress2 != null && !streetAddress2.isEmpty())
-            addressString.append(" ").append(streetAddress2);
-        if (city != null && !city.isEmpty())
-            addressString.append(" ").append(city);
-        if (state != null && !state.isEmpty()) {
-            if (city != null && !city.isEmpty())
-                addressString.append(",");
-            addressString.append(" ").append(state);
-        }
-        if (zip != null && !zip.isEmpty()) {
-            addressString.append(" ").append(zip);
-            if (zipPlus4 != null && !zipPlus4.isEmpty())
-                addressString.append(" ").append(zipPlus4);
-        }
-        return addressString.toString().trim();
-    }
- 
-    public String getName1() {
-        return name1;
+    @Override
+    public String toString() {
+        StringAppender sa = new StringAppender(" ");
+        sa.append(streetAddress.toString());
+        sa.append(city);
+        if (city != null && state != null && !city.isEmpty() && !state.isEmpty())
+            sa.append(",", "");
+        sa.append(state);
+        sa.append(zipCode.toString());
+        return sa.toString().trim();
     }
 
-    public void setName1(String name1) {
-        this.name1 = name1;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Address other = (Address) obj;
+        if (this.streetAddress != other.streetAddress && (this.streetAddress == null
+                || !this.streetAddress.equals(other.streetAddress)))
+            return false;
+        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city))
+            return false;
+        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state))
+            return false;
+        if (this.zipCode != other.zipCode && (this.zipCode == null
+                || !this.zipCode.equals(other.zipCode)))
+            return false;
+        if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt))
+            return false;
+        if (this.barcode != other.barcode && (this.barcode == null
+                || !this.barcode.equals(other.barcode)))
+            return false;
+        if ((this.county == null) ? (other.county != null) : !this.county.equals(other.county))
+            return false;
+        if (this.fips != other.fips && (this.fips == null || !this.fips.equals(other.fips)))
+            return false;
+        if (this.geo != other.geo && (this.geo == null || !this.geo.equals(other.geo)))
+            return false;
+        if (this.addressType != other.addressType)
+            return false;
+        if (this.addressQuality != other.addressQuality)
+            return false;
+        return true;
     }
 
-    public String getName2() {
-        return name2;
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 11 * hash + (this.streetAddress != null ? this.streetAddress.hashCode() : 0);
+        hash = 11 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 11 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 11 * hash + (this.zipCode != null ? this.zipCode.hashCode() : 0);
+        hash = 11 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
+        hash = 11 * hash + (this.barcode != null ? this.barcode.hashCode() : 0);
+        hash = 11 * hash + (this.county != null ? this.county.hashCode() : 0);
+        hash = 11 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        hash = 11 * hash + (this.geo != null ? this.geo.hashCode() : 0);
+        hash = 11 * hash + (this.addressType != null ? this.addressType.hashCode() : 0);
+        hash = 11 * hash + (this.addressQuality != null ? this.addressQuality.hashCode() : 0);
+        return hash;
     }
 
-    public void setName2(String name2) {
-        this.name2 = name2;
+    public StreetAddress getStreetAddress() {
+        return streetAddress;
     }
 
-    public String getStreetAddress1() {
-        return streetAddress1;
+    public void setStreetAddress(StreetAddress streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
-    public void setStreetAddress1(String streetAddress1) {
-        this.streetAddress1 = streetAddress1;
-    }
-
-    public String getStreetAddress2() {
-        return streetAddress2;
-    }
-
-    public void setStreetAddress2(String streetAddress2) {
-        this.streetAddress2 = streetAddress2;
-    }
-   
     public String getCity() {
         return city;
     }
@@ -85,20 +108,68 @@ public class Address implements Serializable {
         this.state = state;
     }
 
-    public String getZip() {
-        return zip;
+    public ZipCode getZipCode() {
+        return zipCode;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setZipCode(ZipCode zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public String getZipPlus4() {
-        return zipPlus4;
+    public String getCrrt() {
+        return crrt;
     }
 
-    public void setZipPlus4(String zipPlus4) {
-        this.zipPlus4 = zipPlus4;
+    public void setCrrt(String crrt) {
+        this.crrt = crrt;
+    }
+
+    public Barcode getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(Barcode barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public Fips getFips() {
+        return fips;
+    }
+
+    public void setFips(Fips fips) {
+        this.fips = fips;
+    }
+
+    public Geolocation getGeo() {
+        return geo;
+    }
+
+    public void setGeo(Geolocation geo) {
+        this.geo = geo;
+    }
+
+    public AddressType getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(AddressType addressType) {
+        this.addressType = addressType;
+    }
+
+    public AddressQuality getAddressQuality() {
+        return addressQuality;
+    }
+
+    public void setAddressQuality(AddressQuality addressQuality) {
+        this.addressQuality = addressQuality;
     }
 
 }
