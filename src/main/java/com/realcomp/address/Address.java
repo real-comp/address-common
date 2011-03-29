@@ -6,7 +6,7 @@ import java.io.Serializable;
  *
  * @author BGoering
  */
-public class Address implements Serializable {
+public class Address extends StreetAddress implements Serializable {
 
     private StreetAddress streetAddress;
     private String city;
@@ -84,6 +84,7 @@ public class Address implements Serializable {
         return hash;
     }
 
+    /*
     public StreetAddress getStreetAddress() {
         return streetAddress;
     }
@@ -91,6 +92,8 @@ public class Address implements Serializable {
     public void setStreetAddress(StreetAddress streetAddress) {
         this.streetAddress = streetAddress;
     }
+     * 
+     */
 
     public String getCity() {
         return city;
