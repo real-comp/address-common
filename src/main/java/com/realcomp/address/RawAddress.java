@@ -25,11 +25,17 @@ public class RawAddress implements Serializable {
     public void setAddress(ArrayList<String> address) {
         if (address == null)
             throw new IllegalArgumentException("address is null");
-        this.address = address;
+        if (this.address != null && !this.address.isEmpty())
+            this.address.clear();
+        for (String addr : address)
+            addAddress(addr);
     }
 
     public void addAddress(String address) {
-        this.address.add(address);
+        if (address == null)
+            throw new IllegalArgumentException("address line is null");
+        if (!address.trim().isEmpty())
+            this.address.add(address.trim());
     }
 
     public String getCity() {
@@ -37,7 +43,10 @@ public class RawAddress implements Serializable {
     }
 
     public void setCity(String city) {
-        this.city = city;
+        if (city == null)
+            throw new IllegalArgumentException("city is null");
+        if (!city.trim().isEmpty())
+            this.city = city.trim();
     }
 
     public String getState() {
@@ -45,7 +54,10 @@ public class RawAddress implements Serializable {
     }
 
     public void setState(String state) {
-        this.state = state;
+        if (state == null)
+            throw new IllegalArgumentException("state is null");
+        if (!state.trim().isEmpty())
+            this.state = state.trim();
     }
 
     public String getZip() {
@@ -53,7 +65,10 @@ public class RawAddress implements Serializable {
     }
 
     public void setZip(String zip) {
-        this.zip = zip;
+        if (zip == null)
+            throw new IllegalArgumentException("zip is null");
+        if (!zip.trim().isEmpty())
+            this.zip = zip.trim();
     }
 
 }
