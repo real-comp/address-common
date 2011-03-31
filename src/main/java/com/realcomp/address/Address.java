@@ -8,15 +8,15 @@ import java.io.Serializable;
  */
 public class Address implements Serializable {
 
-    private StreetAddress streetAddress;
+    private StreetAddress streetAddress = new StreetAddress();
     private String city;
     private String state;
-    private ZipCode zipCode;
+    private ZipCode zipCode = new ZipCode();
     private String crrt;
-    private Barcode barcode;
+    private Barcode barcode = new Barcode();
     private String county;
-    private Fips fips;
-    private Geolocation geo;
+    private Fips fips = new Fips();
+    private Geolocation geo = new Geolocation();
     private AddressType addressType;
     private AddressQuality addressQuality;
 

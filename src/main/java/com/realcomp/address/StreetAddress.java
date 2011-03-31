@@ -72,8 +72,7 @@ public class StreetAddress {
     }
 
     public void setHouseNum(String houseNum) {
-        if (houseNum != null)
-            this.houseNum = houseNum;
+        this.houseNum = houseNum;
     }
 
     public String getPreDir() {
@@ -81,8 +80,7 @@ public class StreetAddress {
     }
 
     public void setPreDir(String preDir) {
-        if (preDir != null)
-            this.preDir = preDir;
+        this.preDir = preDir;
     }
 
     public String getStreet() {
@@ -90,8 +88,7 @@ public class StreetAddress {
     }
 
     public void setStreet(String street) {
-        if (street != null)
-            this.street = street;
+        this.street = street;
     }
 
     public String getStreetSuffix() {
@@ -99,8 +96,7 @@ public class StreetAddress {
     }
 
     public void setStreetSuffix(String streetSuffix) {
-        if (streetSuffix != null)
-            this.streetSuffix = streetSuffix;
+        this.streetSuffix = streetSuffix;
     }
 
     public String getPostDir() {
@@ -108,8 +104,7 @@ public class StreetAddress {
     }
 
     public void setPostDir(String postDir) {
-        if (postDir != null)
-            this.postDir = postDir;
+        this.postDir = postDir;
     }
 
     public String getUnitAbbrev() {
@@ -117,8 +112,7 @@ public class StreetAddress {
     }
 
     public void setUnitAbbrev(String unitAbbrev) {
-        if (unitAbbrev != null)
-            this.unitAbbrev = unitAbbrev;
+        this.unitAbbrev = unitAbbrev;
     }
 
     public String getUnit() {
@@ -126,8 +120,7 @@ public class StreetAddress {
     }
 
     public void setUnit(String unit) {
-        if (unit != null)
-            this.unit = unit;
+        this.unit = unit;
     }
 
 }
