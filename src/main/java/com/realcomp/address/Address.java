@@ -173,7 +173,7 @@ public class Address implements Serializable {
     }
 
     public void setZip4(String zip4) {
-        zipCode.setZip(zip4);
+        zipCode.setZip4(zip4);
     }
 
     public String getZipCode() {
