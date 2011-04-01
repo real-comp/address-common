@@ -1,10 +1,12 @@
 package com.realcomp.address;
 
+import java.io.Serializable;
+
 /**
  *
  * @author BGoering
  */
-public class Fips {
+public class Fips implements Serializable {
 
     private String fipsCounty;
     private String fipsState;

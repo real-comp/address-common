@@ -1,10 +1,12 @@
 package com.realcomp.address;
 
+import java.io.Serializable;
+
 /**
  *
  * @author BGoering
  */
-public class Geolocation {
+public class Geolocation implements Serializable {
 
     private double latitude;
     private double longitude;

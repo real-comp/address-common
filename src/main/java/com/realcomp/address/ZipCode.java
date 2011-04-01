@@ -1,10 +1,12 @@
 package com.realcomp.address;
 
+import java.io.Serializable;
+
 /**
  *
  * @author BGoering
  */
-public class ZipCode {
+public class ZipCode implements Serializable {
 
     private String zip;
     private String zip4;

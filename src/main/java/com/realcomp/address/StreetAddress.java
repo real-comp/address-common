@@ -1,10 +1,12 @@
 package com.realcomp.address;
 
+import java.io.Serializable;
+
 /**
  *
  * @author BGoering
  */
-public class StreetAddress {
+public class StreetAddress implements Serializable {
 
     private String houseNum;
     private String preDir;

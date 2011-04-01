@@ -1,10 +1,12 @@
 package com.realcomp.address;
 
+import java.io.Serializable;
+
 /**
  *
  * @author BGoering
  */
-public class Barcode {
+public class Barcode implements Serializable {
     
     private String barcode;
     private String imbarcode;
