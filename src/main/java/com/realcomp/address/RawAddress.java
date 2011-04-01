@@ -71,4 +71,16 @@ public class RawAddress implements Serializable {
             this.zip = zip.trim();
     }
 
+    @Override
+    public String toString() {
+        StringAppender sa = new StringAppender(" ");
+        sa.append(address.toString());
+        sa.append(city);
+        if (city != null && state != null && !city.isEmpty() && !state.isEmpty())
+            sa.append(",", "");
+        sa.append(state);
+        sa.append(zip);
+        return sa.toString().trim();
+    }
+
 }
