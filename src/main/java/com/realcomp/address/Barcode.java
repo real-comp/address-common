@@ -11,6 +11,14 @@ public class Barcode implements Serializable {
     private String barcode;
     private String imbarcode;
 
+    public Barcode(){
+    }
+
+    public Barcode(Barcode copy){
+        barcode = copy.barcode;
+        imbarcode = copy.imbarcode;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null)

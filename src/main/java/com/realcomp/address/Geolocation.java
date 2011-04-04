@@ -12,6 +12,15 @@ public class Geolocation implements Serializable {
     private double longitude;
     private LatLongAccuracy latLongAccuracy;
 
+    public Geolocation(){
+    }
+
+    public Geolocation(Geolocation copy){
+        latitude = copy.latitude;
+        longitude = copy.longitude;
+        latLongAccuracy = copy.latLongAccuracy;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null)

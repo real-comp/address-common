@@ -11,6 +11,14 @@ public class ZipCode implements Serializable {
     private String zip;
     private String zip4;
 
+    public ZipCode(){
+    }
+
+    public ZipCode(ZipCode copy){
+        zip = copy.zip;
+        zip4 = copy.zip4;
+    }
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender("-");

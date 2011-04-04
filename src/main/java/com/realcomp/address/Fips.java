@@ -11,6 +11,14 @@ public class Fips implements Serializable {
     private String fipsCounty;
     private String fipsState;
 
+    public Fips(){
+    }
+
+    public Fips(Fips copy){
+        this.fipsCounty = copy.fipsCounty;
+        this.fipsState = copy.fipsState;
+    }
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender();

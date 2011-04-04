@@ -20,6 +20,23 @@ public class Address implements Serializable {
     private AddressType addressType;
     private AddressQuality addressQuality;
 
+    public Address(){
+    }
+
+    public Address(Address copy){
+        streetAddress = new StreetAddress(copy.streetAddress);
+        city = copy.city;
+        state = copy.state;
+        zipCode = new ZipCode(copy.zipCode);
+        crrt = copy.crrt;
+        barcode = new Barcode(copy.barcode);
+        county = copy.county;
+        fips = new Fips(copy.fips);
+        geo = new Geolocation(copy.geo);
+        addressType = copy.addressType;
+        addressQuality = copy.addressQuality;
+    }
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");

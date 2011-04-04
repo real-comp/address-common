@@ -16,6 +16,19 @@ public class StreetAddress implements Serializable {
     private String unitAbbrev;
     private String unit;
 
+    public StreetAddress(){
+    }
+
+    public StreetAddress(StreetAddress copy) {
+        this.houseNum = copy.houseNum;
+        this.preDir = copy.preDir;
+        this.street = copy.street;
+        this.streetSuffix = copy.streetSuffix;
+        this.postDir = copy.postDir;
+        this.unitAbbrev = copy.unitAbbrev;
+        this.unit = copy.unit;
+    }
+    
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");
