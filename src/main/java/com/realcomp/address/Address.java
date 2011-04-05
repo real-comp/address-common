@@ -37,6 +37,10 @@ public class Address implements Serializable {
         addressQuality = copy.addressQuality;
     }
 
+    /**
+     * Returns readable address string including street address, city, state, and ZIP code
+     * @return
+     */
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");
