@@ -83,4 +83,32 @@ public class RawAddress implements Serializable {
         return sa.toString().trim();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final RawAddress other = (RawAddress) obj;
+        if (this.address != other.address && (this.address == null || !this.address.equals(other.address)))
+            return false;
+        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city))
+            return false;
+        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state))
+            return false;
+        if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 97 * hash + (this.zip != null ? this.zip.hashCode() : 0);
+        return hash;
+    }
+
 }
