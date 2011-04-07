@@ -15,7 +15,7 @@ public class Address implements Serializable {
     private String crrt;
     private Barcode barcode = new Barcode();
     private String county;
-    private Fips fips = new Fips();
+    private String fips;
     private Geolocation geo = new Geolocation();
     private AddressType addressType;
     private AddressQuality addressQuality;
@@ -31,7 +31,7 @@ public class Address implements Serializable {
         crrt = copy.crrt;
         barcode = new Barcode(copy.barcode);
         county = copy.county;
-        fips = new Fips(copy.fips);
+        fips = copy.fips;
         geo = new Geolocation(copy.geo);
         addressType = copy.addressType;
         addressQuality = copy.addressQuality;
@@ -165,24 +165,12 @@ public class Address implements Serializable {
         this.county = county;
     }
 
-    public String getFipsCounty() {
-        return fips.getFipsCounty();
-    }
-
-    public void setFipsCounty(String fipsCounty) {
-        fips.setFipsCounty(fipsCounty);
-    }
-
-    public String getFipsState() {
-        return fips.getFipsState();
-    }
-
-    public void setFipsState(String fipsState) {
-        fips.setFipsState(fipsState);
-    }
-
     public String getFips() {
-        return fips.toString();
+        return fips;
+    }
+
+    public void setFips(String fips) {
+        this.fips = fips;
     }
 
     public double getLatitude() {
