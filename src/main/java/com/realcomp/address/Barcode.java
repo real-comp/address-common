@@ -19,6 +19,22 @@ public class Barcode implements Serializable {
         imbarcode = copy.imbarcode;
     }
 
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getImbarcode() {
+        return imbarcode;
+    }
+
+    public void setImbarcode(String imbarcode) {
+        this.imbarcode = imbarcode;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null)
@@ -40,22 +56,6 @@ public class Barcode implements Serializable {
         hash = 67 * hash + (this.barcode != null ? this.barcode.hashCode() : 0);
         hash = 67 * hash + (this.imbarcode != null ? this.imbarcode.hashCode() : 0);
         return hash;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
-
-    public String getImbarcode() {
-        return imbarcode;
-    }
-
-    public void setImbarcode(String imbarcode) {
-        this.imbarcode = imbarcode;
     }
 
 }

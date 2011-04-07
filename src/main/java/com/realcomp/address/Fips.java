@@ -19,6 +19,22 @@ public class Fips implements Serializable {
         this.fipsState = copy.fipsState;
     }
 
+    public String getFipsCounty() {
+        return fipsCounty;
+    }
+
+    public void setFipsCounty(String fipsCounty) {
+        this.fipsCounty = fipsCounty;
+    }
+
+    public String getFipsState() {
+        return fipsState;
+    }
+
+    public void setFipsState(String fipsState) {
+        this.fipsState = fipsState;
+    }
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender();
@@ -54,22 +70,6 @@ public class Fips implements Serializable {
         hash = 59 * hash + (this.fipsCounty != null ? this.fipsCounty.hashCode() : 0);
         hash = 59 * hash + (this.fipsState != null ? this.fipsState.hashCode() : 0);
         return hash;
-    }
-
-    public String getFipsCounty() {
-        return fipsCounty;
-    }
-
-    public void setFipsCounty(String fipsCounty) {
-        this.fipsCounty = fipsCounty;
-    }
-
-    public String getFipsState() {
-        return fipsState;
-    }
-
-    public void setFipsState(String fipsState) {
-        this.fipsState = fipsState;
     }
 
 }

@@ -19,6 +19,22 @@ public class ZipCode implements Serializable {
         zip4 = copy.zip4;
     }
 
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getZip4() {
+        return zip4;
+    }
+
+    public void setZip4(String zip4) {
+        this.zip4 = zip4;
+    }
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender("-");
@@ -51,22 +67,6 @@ public class ZipCode implements Serializable {
         hash = 97 * hash + (this.zip != null ? this.zip.hashCode() : 0);
         hash = 97 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
         return hash;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public String getZip4() {
-        return zip4;
-    }
-
-    public void setZip4(String zip4) {
-        this.zip4 = zip4;
     }
 
 }

@@ -21,6 +21,30 @@ public class Geolocation implements Serializable {
         latLongAccuracy = copy.latLongAccuracy;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public LatLongAccuracy getLatLongAccuracy() {
+        return latLongAccuracy;
+    }
+
+    public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy) {
+        this.latLongAccuracy = latLongAccuracy;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null)
@@ -46,30 +70,6 @@ public class Geolocation implements Serializable {
                 (Double.doubleToLongBits(this.longitude) >>> 32));
         hash = 29 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
         return hash;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public LatLongAccuracy getLatLongAccuracy() {
-        return latLongAccuracy;
-    }
-
-    public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy) {
-        this.latLongAccuracy = latLongAccuracy;
     }
 
 }
