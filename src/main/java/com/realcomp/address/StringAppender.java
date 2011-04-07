@@ -1,7 +1,7 @@
 package com.realcomp.address;
 
 /**
- *
+ * Appends strings to the end of an existing string with a String delimiter (often a space)
  * @author BGoering
  */
 public class StringAppender {
@@ -28,11 +28,21 @@ public class StringAppender {
     public void setDelimiter(String delimiter) {
         this.delimiter = delimiter;
     }
-    
+
+    /**
+     * Appends inData to the existing string separating it by the set delimiter
+     * @param inData String to be appended to the existing string
+     */
     public void append(String inData){
         append(inData, delimiter);
     }
 
+    /**
+     * Appends inData to the existing string separating it by the supplied delimiter
+     * @param inData String to be appended to the existing string
+     * @param delimiter String delimiter to separate the existing string from the inData string
+     * (often a space)
+     */
     public void append(String inData, String delimiter) {
         if (inData != null && !inData.isEmpty()) {
             if (delimiter != null && !empty)
