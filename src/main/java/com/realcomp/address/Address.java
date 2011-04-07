@@ -113,12 +113,12 @@ public class Address implements Serializable {
         this.state = state;
     }
 
-    public String getZip() {
-        return zipCode.getZip();
+    public String getZip5() {
+        return zipCode.getZip5();
     }
 
-    public void setZip(String zip) {
-        zipCode.setZip(zip);
+    public void setZip5(String zip5) {
+        zipCode.setZip5(zip5);
     }
 
     public String getZip4() {
