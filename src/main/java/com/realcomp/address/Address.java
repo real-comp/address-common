@@ -197,19 +197,19 @@ public class Address implements Serializable {
         geo.setLatLongAccuracy(latLongAccuracy);
     }
 
-    public AddressType getAddressType() {
+    public AddressType getType() {
         return addressType;
     }
 
-    public void setAddressType(AddressType addressType) {
+    public void setType(AddressType addressType) {
         this.addressType = addressType;
     }
 
-    public AddressQuality getAddressQuality() {
+    public AddressQuality getQuality() {
         return addressQuality;
     }
 
-    public void setAddressQuality(AddressQuality addressQuality) {
+    public void setQuality(AddressQuality addressQuality) {
         this.addressQuality = addressQuality;
     }
 
