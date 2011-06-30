@@ -13,6 +13,7 @@ public class RawAddress implements Serializable {
     private String city;
     private String state;
     private String zip;
+    private String fips;
 
     public RawAddress() {
         address = new ArrayList<String>();
@@ -71,6 +72,17 @@ public class RawAddress implements Serializable {
             this.zip = zip.trim();
     }
 
+    public String getFips() {
+        return fips;
+    }
+
+    public void setFips(String fips) {
+        if (fips == null)
+            throw new IllegalArgumentException("fips is null");
+        if (!fips.trim().isEmpty())
+            this.fips = fips.trim();
+    }
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");
@@ -98,6 +110,8 @@ public class RawAddress implements Serializable {
             return false;
         if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip))
             return false;
+        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips))
+            return false;
         return true;
     }
 
@@ -108,6 +122,7 @@ public class RawAddress implements Serializable {
         hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
         hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
         hash = 97 * hash + (this.zip != null ? this.zip.hashCode() : 0);
+        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
         return hash;
     }
 
