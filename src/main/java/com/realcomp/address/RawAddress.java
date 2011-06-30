@@ -117,12 +117,12 @@ public class RawAddress implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
-        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 97 * hash + (this.zip != null ? this.zip.hashCode() : 0);
-        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        int hash = 7;
+        hash = 67 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 67 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 67 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 67 * hash + (this.zip != null ? this.zip.hashCode() : 0);
+        hash = 67 * hash + (this.fips != null ? this.fips.hashCode() : 0);
         return hash;
     }
 
