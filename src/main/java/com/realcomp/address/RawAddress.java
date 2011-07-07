@@ -19,6 +19,14 @@ public class RawAddress implements Serializable {
         address = new ArrayList<String>();
     }
 
+    public RawAddress(RawAddress copy) {
+        address = copy.address;
+        city = copy.city;
+        state = copy.state;
+        zip = copy.zip;
+        fips = copy.fips;
+    }
+
     public ArrayList<String> getAddress() {
         return address;
     }
