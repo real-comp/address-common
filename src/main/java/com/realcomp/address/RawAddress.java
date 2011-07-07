@@ -92,6 +92,10 @@ public class RawAddress implements Serializable {
             sa.append(",", "");
         sa.append(state);
         sa.append(zip);
+        if (fips != null)
+            sa.append(" ", "[fips:");
+            sa.append("", fips);
+            sa.append("", "]");
         return sa.toString().trim();
     }
 
