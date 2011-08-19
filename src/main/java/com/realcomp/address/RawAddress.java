@@ -1,6 +1,7 @@
 package com.realcomp.address;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  */
 public class RawAddress implements Serializable {
 
-    private ArrayList<String> address;
+    private List<String> address;
     private String city;
     private String state;
     private String zip;
@@ -27,11 +28,11 @@ public class RawAddress implements Serializable {
         fips = copy.fips;
     }
 
-    public ArrayList<String> getAddress() {
+    public List<String> getAddress() {
         return address;
     }
 
-    public void setAddress(ArrayList<String> address) {
+    public void setAddress(List<String> address) {
         if (address == null)
             throw new IllegalArgumentException("address is null");
         if (this.address != null && !this.address.isEmpty())
