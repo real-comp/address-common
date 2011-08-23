@@ -21,7 +21,7 @@ public class RawAddress implements Serializable {
     }
 
     public RawAddress(RawAddress copy) {
-        address = copy.address;
+        address = new ArrayList<String>(copy.address);
         city = copy.city;
         state = copy.state;
         zip = copy.zip;
