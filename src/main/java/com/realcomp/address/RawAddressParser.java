@@ -65,7 +65,10 @@ public class RawAddressParser {
     public RawAddress parse(RawAddress rawAddress) {
         
         RawAddress modifiedAddr = new RawAddress(rawAddress);
-        splitAddress(modifiedAddr, ",");
+        
+        if (modifiedAddr.getCity() == null || modifiedAddr.getCity().isEmpty())
+            splitAddress(modifiedAddr, ",");
+        
         extractZip(modifiedAddr);
         
         return modifiedAddr;
