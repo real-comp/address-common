@@ -6,6 +6,6 @@ package com.realcomp.address;
  */
 public enum AddressType {
 
-    STREET, HIGHRISE, POBOX, RURAL_ROUTE, GENERAL
+    STREET, HIGHRISE, POBOX, RURAL_ROUTE, GENERAL, FIRM
             
 }
