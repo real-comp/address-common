@@ -24,4 +24,22 @@ public enum AddressQuality {
         return false;
     }
             
+    
+    public static AddressQuality fromCode(String code){
+        
+        AddressQuality quality = AddressQuality.ERROR;
+        
+        if (code != null){
+            if (code.startsWith("Y"))
+                quality = AddressQuality.VALID;
+            else if (code.startsWith("S"))
+                quality = AddressQuality.UNCONFIRMED_UNIT;
+            else if (code.startsWith("D"))
+                quality = AddressQuality.MISSING_UNIT;
+            else if (code.startsWith("N"))
+                quality = AddressQuality.INVALID;
+        }
+
+        return quality;
+    }
 }
