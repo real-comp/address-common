@@ -3,7 +3,7 @@
     <groupId>com.realcomp.address</groupId>
     <artifactId>address-common</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
     <name>address-common</name>
     <build>
         <plugins>
@@ -40,9 +40,9 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:svn:svn+ssh://dev.real-comp.com/opt/usr/share/rcsvn/address-common/trunk</connection>
-        <developerConnection>scm:svn:svn+ssh://dev.real-comp.com/opt/usr/share/rcsvn/address-common/trunk</developerConnection>
-        <url>http://dev.real-comp.com:8060/browse/rcsvn/address-common/trunk</url>
+        <connection>scm:svn:svn+ssh://dev.real-comp.com/opt/usr/share/rcsvn/address-common/tags/address-common-0.0.5</connection>
+        <developerConnection>scm:svn:svn+ssh://dev.real-comp.com/opt/usr/share/rcsvn/address-common/tags/address-common-0.0.5</developerConnection>
+        <url>http://dev.real-comp.com:8060/browse/rcsvn/address-common/tags/address-common-0.0.5</url>
     </scm>
 
 </project>
