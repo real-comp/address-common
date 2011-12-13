@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  *
  * @author BGoering
+ * @deprecated
  */
 public class Barcode implements Serializable {
     

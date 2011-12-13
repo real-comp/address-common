@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  *
  * @author BGoering
+ * @deprecated Storing zip as a single field in Address
  */
 public class ZipCode implements Serializable {
 

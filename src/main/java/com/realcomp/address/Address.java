@@ -1,136 +1,82 @@
 package com.realcomp.address;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author BGoering
+ * @author krenfro
  */
+@XmlRootElement
 public class Address implements Serializable {
 
-    private StreetAddress streetAddress = new StreetAddress();
+    private String address;    
     private String city;
     private String state;
-    private ZipCode zipCode = new ZipCode();
+    private String zip;
     private String crrt;
-    private Barcode barcode = new Barcode();
-    private String county;
+    private String postnetBarcode;
+    private String imBarcode;
     private String fips;
-    private Geolocation geo = new Geolocation();
-    private AddressType addressType;
-    private AddressQuality addressQuality;
+    private Double latitude;
+    private Double longitude;
+    private LatLongAccuracy latLongAccuracy;
+    private AddressType type;
+    private AddressQuality quality;
 
     public Address(){
     }
 
     public Address(Address copy){
-        streetAddress = new StreetAddress(copy.streetAddress);
+        address = copy.address;
         city = copy.city;
         state = copy.state;
-        zipCode = new ZipCode(copy.zipCode);
+        zip = copy.zip;
         crrt = copy.crrt;
-        barcode = new Barcode(copy.barcode);
-        county = copy.county;
+        postnetBarcode = copy.postnetBarcode;
+        imBarcode = copy.imBarcode;
         fips = copy.fips;
-        geo = new Geolocation(copy.geo);
-        addressType = copy.addressType;
-        addressQuality = copy.addressQuality;
+        latitude = copy.latitude;
+        longitude = copy.longitude;
+        latLongAccuracy = copy.latLongAccuracy;
+        type = copy.type;
+        quality = copy.quality;
+    }
+    
+
+    public String getAddress() {
+        return address;
     }
 
-    public String getHouseNum() {
-        return streetAddress.getHouseNum();
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setHouseNum(String houseNum) {
-        streetAddress.setHouseNum(houseNum);
+    public AddressQuality getQuality() {
+        return quality;
     }
 
-    public String getPreDir() {
-        return streetAddress.getPreDir();
+    public void setQuality(AddressQuality quality) {
+        this.quality = quality;
     }
 
-    public void setPreDir(String preDir) {
-        streetAddress.setPreDir(preDir);
+    public AddressType getType() {
+        return type;
     }
 
-    public String getStreet() {
-        return streetAddress.getStreet();
+    public void setType(AddressType type) {
+        this.type = type;
     }
-
-    public void setStreet(String street) {
-        streetAddress.setStreet(street);
-    }
-
-    public String getStreetSuffix() {
-        return streetAddress.getStreetSuffix();
-    }
-
-    public void setStreetSuffix(String streetSuffix) {
-        streetAddress.setStreetSuffix(streetSuffix);
-    }
-
-    public String getPostDir() {
-        return streetAddress.getPostDir();
-    }
-
-    public void setPostDir(String postDir) {
-        streetAddress.setPostDir(postDir);
-    }
-
-    public String getUnitAbbrev() {
-        return streetAddress.getUnitAbbrev();
-    }
-
-    public void setUnitAbbrev(String unitAbbrev) {
-        streetAddress.setUnitAbbrev(unitAbbrev);
-    }
-
-    public String getUnit() {
-        return streetAddress.getUnit();
-    }
-
-    public void setUnit(String unit) {
-        streetAddress.setUnit(unit);
-    }
-
-    public String getStreetAddress() {
-        return streetAddress.toString();
-    }
-
+    
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZip5() {
-        return zipCode.getZip5();
-    }
-
-    public void setZip5(String zip5) {
-        zipCode.setZip5(zip5);
-    }
-
-    public String getZip4() {
-        return zipCode.getZip4();
-    }
-
-    public void setZip4(String zip4) {
-        zipCode.setZip4(zip4);
-    }
-
-    public String getZipCode() {
-        return zipCode.toString();
     }
 
     public String getCrrt() {
@@ -141,30 +87,6 @@ public class Address implements Serializable {
         this.crrt = crrt;
     }
 
-    public String getBarcode() {
-        return barcode.getBarcode();
-    }
-
-    public void setBarcode(String barcd) {
-        barcode.setBarcode(barcd);
-    }
-
-    public String getImbarcode() {
-        return barcode.getImbarcode();
-    }
-
-    public void setImbarcode(String imbarcode) {
-        barcode.setImbarcode(imbarcode);
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
     public String getFips() {
         return fips;
     }
@@ -173,60 +95,60 @@ public class Address implements Serializable {
         this.fips = fips;
     }
 
-    public double getLatitude() {
-        return geo.getLatitude();
+    public String getImBarcode() {
+        return imBarcode;
     }
 
-    public void setLatitude(double latitude) {
-        geo.setLatitude(latitude);
+    public void setImBarcode(String imBarcode) {
+        this.imBarcode = imBarcode;
     }
 
-    public double getLongitude() {
-        return geo.getLongitude();
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setLongitude(double longitude) {
-        geo.setLongitude(longitude);
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getPostnetBarcode() {
+        return postnetBarcode;
+    }
+
+    public void setPostnetBarcode(String postnetBarcode) {
+        this.postnetBarcode = postnetBarcode;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public LatLongAccuracy getLatLongAccuracy() {
-        return geo.getLatLongAccuracy();
+        return latLongAccuracy;
     }
 
     public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy) {
-        geo.setLatLongAccuracy(latLongAccuracy);
-    }
-
-    public AddressType getType() {
-        return addressType;
-    }
-
-    public void setType(AddressType addressType) {
-        this.addressType = addressType;
-    }
-
-    public AddressQuality getQuality() {
-        return addressQuality;
-    }
-
-    public void setQuality(AddressQuality addressQuality) {
-        this.addressQuality = addressQuality;
-    }
-
-    /**
-     * Returns readable address string including street address, city, state, and ZIP code
-     * @return
-     */
-    @Override
-    public String toString() {
-        StringAppender sa = new StringAppender(" ");
-        sa.append(streetAddress.toString());
-        sa.append(city);
-        if (city != null && state != null && !city.isEmpty() && !state.isEmpty())
-            sa.append(",", "");
-        sa.append(state);
-        sa.append(zipCode.toString());
-        return sa.toString().trim();
+        this.latLongAccuracy = latLongAccuracy;
     }
 
     @Override
@@ -236,49 +158,55 @@ public class Address implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         final Address other = (Address) obj;
-        if (this.streetAddress != other.streetAddress && (this.streetAddress == null
-                || !this.streetAddress.equals(other.streetAddress)))
+        if ((this.address == null) ? (other.address != null) : !this.address.equals(other.address))
             return false;
         if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city))
             return false;
         if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state))
             return false;
-        if (this.zipCode != other.zipCode && (this.zipCode == null
-                || !this.zipCode.equals(other.zipCode)))
+        if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip))
             return false;
         if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt))
             return false;
-        if (this.barcode != other.barcode && (this.barcode == null
-                || !this.barcode.equals(other.barcode)))
+        if ((this.postnetBarcode == null) ? (other.postnetBarcode != null)
+                : !this.postnetBarcode.equals(other.postnetBarcode))
             return false;
-        if ((this.county == null) ? (other.county != null) : !this.county.equals(other.county))
+        if ((this.imBarcode == null) ? (other.imBarcode != null) : !this.imBarcode.equals(other.imBarcode))
             return false;
-        if (this.fips != other.fips && (this.fips == null || !this.fips.equals(other.fips)))
+        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips))
             return false;
-        if (this.geo != other.geo && (this.geo == null || !this.geo.equals(other.geo)))
+        if (this.latitude != other.latitude && (this.latitude == null || !this.latitude.equals(other.latitude)))
             return false;
-        if (this.addressType != other.addressType)
+        if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude)))
             return false;
-        if (this.addressQuality != other.addressQuality)
+        if (this.latLongAccuracy != other.latLongAccuracy)
+            return false;
+        if (this.type != other.type)
+            return false;
+        if (this.quality != other.quality)
             return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 11 * hash + (this.streetAddress != null ? this.streetAddress.hashCode() : 0);
-        hash = 11 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 11 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 11 * hash + (this.zipCode != null ? this.zipCode.hashCode() : 0);
-        hash = 11 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 11 * hash + (this.barcode != null ? this.barcode.hashCode() : 0);
-        hash = 11 * hash + (this.county != null ? this.county.hashCode() : 0);
-        hash = 11 * hash + (this.fips != null ? this.fips.hashCode() : 0);
-        hash = 11 * hash + (this.geo != null ? this.geo.hashCode() : 0);
-        hash = 11 * hash + (this.addressType != null ? this.addressType.hashCode() : 0);
-        hash = 11 * hash + (this.addressQuality != null ? this.addressQuality.hashCode() : 0);
+        int hash = 7;
+        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 97 * hash + (this.zip != null ? this.zip.hashCode() : 0);
+        hash = 97 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
+        hash = 97 * hash + (this.postnetBarcode != null ? this.postnetBarcode.hashCode() : 0);
+        hash = 97 * hash + (this.imBarcode != null ? this.imBarcode.hashCode() : 0);
+        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        hash = 97 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
+        hash = 97 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
+        hash = 97 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
+        hash = 97 * hash + (this.type != null ? this.type.hashCode() : 0);
+        hash = 97 * hash + (this.quality != null ? this.quality.hashCode() : 0);
         return hash;
     }
+    
+    
 
 }
