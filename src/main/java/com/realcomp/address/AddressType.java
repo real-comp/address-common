@@ -13,7 +13,7 @@ public enum AddressType {
      * @param code
      * @return 
      */
-    public static AddressType fromCode(String code){
+    public static AddressType decode(String code){
        
         AddressType type = null;
         

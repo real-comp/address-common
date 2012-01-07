@@ -25,7 +25,7 @@ public enum AddressQuality {
     }
             
     
-    public static AddressQuality fromCode(String code){
+    public static AddressQuality decode(String code){
         
         AddressQuality quality = AddressQuality.ERROR;
         
