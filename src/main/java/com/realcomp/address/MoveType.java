@@ -16,7 +16,7 @@ public enum MoveType {
     PO_BOX_CLOSED;
     
     /**
-     * Decode the matchflag field to determine the type of move.
+     * Decode the Accuzip matchflag field to determine the type of move.
      * @param code
      * @return MoveType or null if not moved.
      */

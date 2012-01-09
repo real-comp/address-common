@@ -11,9 +11,8 @@ public class NcoaAddress extends Address{
     private String moveDate;
     
     public NcoaAddress(){
-    
+        super();
     }
-    
     
     public NcoaAddress(Address address){
         super(address);
@@ -46,6 +45,12 @@ public class NcoaAddress extends Address{
     @Override
     public boolean equals(Object obj) {
         
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        
+        //rolling my own equals, but relying on equals() from Address
         if (super.equals(obj)){
             final NcoaAddress other = (NcoaAddress) obj;
             if (this.moveType != other.moveType)
