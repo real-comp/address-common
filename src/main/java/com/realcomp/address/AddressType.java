@@ -1,22 +1,27 @@
 package com.realcomp.address;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author BGoering
  */
 public enum AddressType {
 
-    STREET, HIGHRISE, POBOX, RURAL_ROUTE, GENERAL, FIRM;
-            
+
+    STREET, HIGHRISE, POBOX, RURAL_ROUTE, GENERAL, FIRM, UNKNOWN;
+
+    private static final Logger logger = Logger.getLogger(AddressType.class.getName());
+
     /**
      * Returns the AddressType from the USPS code (S,H,P,R,G,F)
      * @param code
-     * @return 
+     * @return
      */
     public static AddressType decode(String code){
-       
+
         AddressType type = null;
-        
+
         if (code.equals("S"))
             type = AddressType.STREET;
         else if (code.equals("H"))
@@ -29,9 +34,11 @@ public enum AddressType {
             type = AddressType.GENERAL;
         else if (code.equals("F"))
             type = AddressType.FIRM;
-        else if (code != null && !code.trim().isEmpty())
-            throw new IllegalStateException("Unhandled Address Type: " + code);
-        
-        return type;        
+        else if (code != null && !code.trim().isEmpty()){
+            logger.warning("Unhandled AddressType: [" + code + "]");
+            type = AddressType.UNKNOWN;
+        }
+
+        return type;
     }
 }
