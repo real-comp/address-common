@@ -1,5 +1,6 @@
 package com.realcomp.address;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -35,7 +36,7 @@ public enum AddressType {
         else if (code.equals("F"))
             type = AddressType.FIRM;
         else if (code != null && !code.trim().isEmpty()){
-            logger.warning("Unhandled AddressType: [" + code + "]");
+            logger.log(Level.WARNING, "Unhandled AddressType: [{0}]", code);
             type = AddressType.UNKNOWN;
         }
 
