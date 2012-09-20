@@ -30,7 +30,7 @@ public class Address implements Serializable {
      * Eventually, a full text search of the address line should satisfy walk-the-street searches.
      * Alternatively, if we had a reliable address parser, this could be eliminated.
      */
-    private StreetAddress parsed;
+    private ParsedStreetAddress parsed;
 
 
     public Address(){
@@ -158,11 +158,11 @@ public class Address implements Serializable {
         this.latLongAccuracy = latLongAccuracy;
     }
 
-    public StreetAddress getParsed(){
+    public ParsedStreetAddress getParsed(){
         return parsed;
     }
 
-    public void setParsed(StreetAddress parsed){
+    public void setParsed(ParsedStreetAddress parsed){
         this.parsed = parsed;
     }
 

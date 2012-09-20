@@ -6,7 +6,11 @@ package com.realcomp.address;
  */
 public enum AddressQuality {
 
-    VALID, UNCONFIRMED_UNIT, MISSING_UNIT, INVALID, ERROR;
+    VALID,
+    UNCONFIRMED_UNIT,
+    MISSING_UNIT,
+    INVALID,
+    ERROR;
 
     /**
      * Says if Address is a deliverable USPS address
@@ -23,12 +27,12 @@ public enum AddressQuality {
         }
         return false;
     }
-            
-    
+
+
     public static AddressQuality decode(String code){
-        
+
         AddressQuality quality = AddressQuality.ERROR;
-        
+
         if (code != null){
             if (code.startsWith("Y"))
                 quality = AddressQuality.VALID;

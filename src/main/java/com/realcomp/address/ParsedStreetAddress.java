@@ -6,7 +6,7 @@ import java.io.Serializable;
  *
  * @author BGoering
  */
-public class StreetAddress implements Serializable {
+public class ParsedStreetAddress implements Serializable {
 
     private String houseNum;
     private String preDir;
@@ -16,10 +16,10 @@ public class StreetAddress implements Serializable {
     private String unitAbbrev;
     private String unit;
 
-    public StreetAddress(){
+    public ParsedStreetAddress(){
     }
 
-    public StreetAddress(StreetAddress copy) {
+    public ParsedStreetAddress(ParsedStreetAddress copy) {
         this.houseNum = copy.houseNum;
         this.preDir = copy.preDir;
         this.street = copy.street;
@@ -104,7 +104,7 @@ public class StreetAddress implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        final StreetAddress other = (StreetAddress) obj;
+        final ParsedStreetAddress other = (ParsedStreetAddress) obj;
         if ((this.houseNum == null) ? (other.houseNum != null)
                 : !this.houseNum.equals(other.houseNum))
             return false;
