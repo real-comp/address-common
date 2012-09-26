@@ -51,6 +51,10 @@ public class Address implements Serializable {
         type = copy.type;
         quality = copy.quality;
 
+        if (copy.parsed != null){
+            parsed = new ParsedStreetAddress(copy.parsed);
+        }
+
     }
 
 
