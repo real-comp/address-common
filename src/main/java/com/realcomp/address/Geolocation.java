@@ -5,12 +5,16 @@ import java.io.Serializable;
 /**
  *
  * @author BGoering
+ * @author krenfro
  */
 public class Geolocation implements Serializable {
 
-    private double latitude;
-    private double longitude;
-    private LatLongAccuracy accuracy;
+    protected double latitude;
+    protected double longitude;
+    protected LatLongAccuracy accuracy;
+
+    protected String censusTract;
+    protected String censusBlockGroup;
 
     public Geolocation(double latitude, double longitude, LatLongAccuracy accuracy){
         if (accuracy == null){
@@ -19,7 +23,6 @@ public class Geolocation implements Serializable {
         this.latitude = latitude;
         this.longitude = longitude;
         this.accuracy = accuracy;
-
     }
 
     public Geolocation(Geolocation copy){
@@ -44,23 +47,50 @@ public class Geolocation implements Serializable {
         this.longitude = longitude;
     }
 
-    public LatLongAccuracy getLatLongAccuracy() {
+    /**
+     *
+     * @return the accuracy, never null
+     */
+    public LatLongAccuracy getAccuracy(){
         return accuracy;
     }
 
-    public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy) {
+    /**
+     *
+     * @param accuracy not null
+     */
+    public void setAccuracy(LatLongAccuracy accuracy){
         if (accuracy == null){
             throw new IllegalArgumentException("accuracy is null");
         }
-        this.accuracy = latLongAccuracy;
+
+        this.accuracy = accuracy;
+    }
+
+    public String getCensusTract(){
+        return censusTract;
+    }
+
+    public void setCensusTract(String censusTract){
+        this.censusTract = censusTract;
+    }
+
+    public String getCensusBlockGroup(){
+        return censusBlockGroup;
+    }
+
+    public void setCensusBlockGroup(String censusBlockGroup){
+        this.censusBlockGroup = censusBlockGroup;
     }
 
     @Override
     public int hashCode(){
         int hash = 7;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.latitude) ^ (Double.doubleToLongBits(this.latitude) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.longitude) ^ (Double.doubleToLongBits(this.longitude) >>> 32));
-        hash = 97 * hash + (this.accuracy != null ? this.accuracy.hashCode() : 0);
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.latitude) ^ (Double.doubleToLongBits(this.latitude) >>> 32));
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.longitude) ^ (Double.doubleToLongBits(this.longitude) >>> 32));
+        hash = 41 * hash + (this.accuracy != null ? this.accuracy.hashCode() : 0);
+        hash = 41 * hash + (this.censusTract != null ? this.censusTract.hashCode() : 0);
+        hash = 41 * hash + (this.censusBlockGroup != null ? this.censusBlockGroup.hashCode() : 0);
         return hash;
     }
 
@@ -82,6 +112,13 @@ public class Geolocation implements Serializable {
         if (this.accuracy != other.accuracy){
             return false;
         }
+        if ((this.censusTract == null) ? (other.censusTract != null) : !this.censusTract.equals(other.censusTract)){
+            return false;
+        }
+        if ((this.censusBlockGroup == null) ? (other.censusBlockGroup != null) : !this.censusBlockGroup.equals(other.censusBlockGroup)){
+            return false;
+        }
         return true;
     }
+
 }
