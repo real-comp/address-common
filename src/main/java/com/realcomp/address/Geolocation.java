@@ -86,11 +86,11 @@ public class Geolocation implements Serializable {
     @Override
     public int hashCode(){
         int hash = 7;
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.latitude) ^ (Double.doubleToLongBits(this.latitude) >>> 32));
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.longitude) ^ (Double.doubleToLongBits(this.longitude) >>> 32));
-        hash = 41 * hash + (this.accuracy != null ? this.accuracy.hashCode() : 0);
-        hash = 41 * hash + (this.censusTract != null ? this.censusTract.hashCode() : 0);
-        hash = 41 * hash + (this.censusBlockGroup != null ? this.censusBlockGroup.hashCode() : 0);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.latitude) ^ (Double.doubleToLongBits(this.latitude) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.longitude) ^ (Double.doubleToLongBits(this.longitude) >>> 32));
+        hash = 97 * hash + (this.accuracy != null ? this.accuracy.hashCode() : 0);
+        hash = 97 * hash + (this.censusTract != null ? this.censusTract.hashCode() : 0);
+        hash = 97 * hash + (this.censusBlockGroup != null ? this.censusBlockGroup.hashCode() : 0);
         return hash;
     }
 
@@ -120,5 +120,4 @@ public class Geolocation implements Serializable {
         }
         return true;
     }
-
 }
