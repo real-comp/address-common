@@ -3,7 +3,7 @@
     <groupId>com.realcomp.address</groupId>
     <artifactId>address-common</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.8-SNAPSHOT</version>
     <name>address-common</name>
     <build>
         <plugins>
@@ -25,7 +25,12 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <distributionManagement>

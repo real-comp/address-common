@@ -5,15 +5,14 @@ package com.realcomp.address;
  * @author krenfro
  */
 public class NcoaAddress extends Address{
-    private static final long serialVersionUID = 1L;
-    
+
     private MoveType moveType;
     private String moveDate;
-    
+
     public NcoaAddress(){
         super();
     }
-    
+
     public NcoaAddress(Address address){
         super(address);
         if (address instanceof NcoaAddress){
@@ -29,7 +28,7 @@ public class NcoaAddress extends Address{
     public void setMoveDate(String moveDate) {
         this.moveDate = moveDate;
     }
-    
+
     public MoveType getMoveType() {
         return moveType;
     }
@@ -37,19 +36,19 @@ public class NcoaAddress extends Address{
     public void setMoveType(MoveType moveType) {
         this.moveType = moveType;
     }
-    
+
     public boolean hasMoved(){
         return moveType != null;
     }
 
     @Override
     public boolean equals(Object obj) {
-        
+
         if (obj == null)
             return false;
         if (getClass() != obj.getClass())
             return false;
-        
+
         //rolling my own equals, but relying on equals() from Address
         if (super.equals(obj)){
             final NcoaAddress other = (NcoaAddress) obj;
@@ -71,5 +70,5 @@ public class NcoaAddress extends Address{
         hash = 37 * hash + (this.moveDate != null ? this.moveDate.hashCode() : 0);
         return hash;
     }
-    
+
 }

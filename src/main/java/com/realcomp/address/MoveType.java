@@ -1,29 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.realcomp.address;
 
-/**
- *
- * @author krenfro
- */
 public enum MoveType {
-    
+
     MOVED,
     MOVED_NO_FORWARDING_ADDRESS,
     MOVED_FOREIGN,
     PO_BOX_CLOSED;
-    
+
     /**
      * Decode the Accuzip matchflag field to determine the type of move.
      * @param code
      * @return MoveType or null if not moved.
      */
     public static MoveType decode(String code){
-        
+
         MoveType moveType = null;
-        
+
         if (code != null){
             if (code.startsWith("M"))
                 moveType = MOVED;
