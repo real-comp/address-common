@@ -90,6 +90,11 @@ public class RawAddress implements Serializable {
     public String getHint(String name){
         return hints == null ? null : hints.get(name);
     }
+    
+
+    public boolean hasHints(){
+        return hints == null || hints.isEmpty();
+    }
 
     /**
      * @return address lines. never null - but perhaps empty
