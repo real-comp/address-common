@@ -16,8 +16,6 @@ public class Address implements Serializable {
     private String state;
     private String zip;
     private String crrt;
-    private String postnetBarcode;
-    private String imBarcode;
     private String fips;
     private Double latitude;
     private Double longitude;
@@ -42,8 +40,6 @@ public class Address implements Serializable {
         state = copy.state;
         zip = copy.zip;
         crrt = copy.crrt;
-        postnetBarcode = copy.postnetBarcode;
-        imBarcode = copy.imBarcode;
         fips = copy.fips;
         latitude = copy.latitude;
         longitude = copy.longitude;
@@ -106,14 +102,6 @@ public class Address implements Serializable {
         this.fips = fips;
     }
 
-    public String getImBarcode() {
-        return imBarcode;
-    }
-
-    public void setImBarcode(String imBarcode) {
-        this.imBarcode = imBarcode;
-    }
-
     public Double getLatitude() {
         return latitude;
     }
@@ -128,14 +116,6 @@ public class Address implements Serializable {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
-    }
-
-    public String getPostnetBarcode() {
-        return postnetBarcode;
-    }
-
-    public void setPostnetBarcode(String postnetBarcode) {
-        this.postnetBarcode = postnetBarcode;
     }
 
     public String getState() {
@@ -195,8 +175,6 @@ public class Address implements Serializable {
         hash = 89 * hash + (this.state != null ? this.state.hashCode() : 0);
         hash = 89 * hash + (this.zip != null ? this.zip.hashCode() : 0);
         hash = 89 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 89 * hash + (this.postnetBarcode != null ? this.postnetBarcode.hashCode() : 0);
-        hash = 89 * hash + (this.imBarcode != null ? this.imBarcode.hashCode() : 0);
         hash = 89 * hash + (this.fips != null ? this.fips.hashCode() : 0);
         hash = 89 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
         hash = 89 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
@@ -229,12 +207,6 @@ public class Address implements Serializable {
             return false;
         }
         if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)){
-            return false;
-        }
-        if ((this.postnetBarcode == null) ? (other.postnetBarcode != null) : !this.postnetBarcode.equals(other.postnetBarcode)){
-            return false;
-        }
-        if ((this.imBarcode == null) ? (other.imBarcode != null) : !this.imBarcode.equals(other.imBarcode)){
             return false;
         }
         if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips)){
