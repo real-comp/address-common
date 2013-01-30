@@ -35,6 +35,9 @@ public enum AddressType {
             type = AddressType.GENERAL;
         else if (code.equals("F"))
             type = AddressType.FIRM;
+        else if (code.equals("0")){
+            type = AddressType.UNKNOWN;
+        }
         else if (code != null && !code.trim().isEmpty()){
             logger.log(Level.WARNING, "Unhandled AddressType: [{0}]", code);
             type = AddressType.UNKNOWN;
