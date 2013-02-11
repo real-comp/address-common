@@ -18,13 +18,13 @@ public class RawAddressParserTest {
 
         RawAddressParser parser = new RawAddressParser();
         RawAddress rawAddress = new RawAddress();
-        rawAddress.addAddress(addressLine);
+        rawAddress.addAddressLine(addressLine);
         RawAddress modifiedRawAddress = parser.parse(rawAddress);
 
-         assertEquals("3520 OHIO AVE", modifiedRawAddress.getAddress().get(0));
-        assertEquals("SPC #7", modifiedRawAddress.getAddress().get(1));
-        assertEquals("DICKINSON", modifiedRawAddress.getAddress().get(2));
-        assertEquals("TX", modifiedRawAddress.getAddress().get(3));
+         assertEquals("3520 OHIO AVE", modifiedRawAddress.getAddressLines().get(0));
+        assertEquals("SPC #7", modifiedRawAddress.getAddressLines().get(1));
+        assertEquals("DICKINSON", modifiedRawAddress.getAddressLines().get(2));
+        assertEquals("TX", modifiedRawAddress.getAddressLines().get(3));
 
         assertEquals("77539", modifiedRawAddress.getZip());
     }
@@ -36,13 +36,13 @@ public class RawAddressParserTest {
 
         RawAddressParser parser = new RawAddressParser();
         RawAddress rawAddress = new RawAddress();
-        rawAddress.addAddress(addressLine);
+        rawAddress.addAddressLine(addressLine);
         RawAddress modifiedRawAddress = parser.parse(rawAddress);
 
-        assertEquals("3520 OHIO AVE", modifiedRawAddress.getAddress().get(0));
-        assertEquals("SPC #7", modifiedRawAddress.getAddress().get(1));
-        assertEquals("DICKINSON", modifiedRawAddress.getAddress().get(2));
-        assertEquals("TX", modifiedRawAddress.getAddress().get(3));
+        assertEquals("3520 OHIO AVE", modifiedRawAddress.getAddressLines().get(0));
+        assertEquals("SPC #7", modifiedRawAddress.getAddressLines().get(1));
+        assertEquals("DICKINSON", modifiedRawAddress.getAddressLines().get(2));
+        assertEquals("TX", modifiedRawAddress.getAddressLines().get(3));
         assertEquals("77539-1234", modifiedRawAddress.getZip());
 
     }
@@ -54,13 +54,13 @@ public class RawAddressParserTest {
 
         RawAddressParser parser = new RawAddressParser();
         RawAddress rawAddress = new RawAddress();
-        rawAddress.addAddress(addressLine);
+        rawAddress.addAddressLine(addressLine);
         RawAddress modifiedRawAddress = parser.parse(rawAddress);
 
-        assertEquals("3520 OHIO AVE", modifiedRawAddress.getAddress().get(0));
-        assertEquals("SPC #7", modifiedRawAddress.getAddress().get(1));
-        assertEquals("DICKINSON", modifiedRawAddress.getAddress().get(2));
-        assertEquals("TX  7753", modifiedRawAddress.getAddress().get(3));
+        assertEquals("3520 OHIO AVE", modifiedRawAddress.getAddressLines().get(0));
+        assertEquals("SPC #7", modifiedRawAddress.getAddressLines().get(1));
+        assertEquals("DICKINSON", modifiedRawAddress.getAddressLines().get(2));
+        assertEquals("TX  7753", modifiedRawAddress.getAddressLines().get(3));
 
         assertNull(modifiedRawAddress.getZip());
     }

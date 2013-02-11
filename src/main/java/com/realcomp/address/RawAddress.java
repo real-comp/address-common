@@ -46,18 +46,18 @@ public class RawAddress implements Serializable {
     public static String HINT_JURISCITY = "jurisCity";
 
 
-    protected List<String> address;
+    protected List<String> lines;
     protected String city;
     protected String state;
     protected String zip;
     protected Map<String,String> hints;
 
     public RawAddress() {
-        address = new ArrayList<String>();
+        lines = new ArrayList<String>();
     }
 
     public RawAddress(RawAddress copy) {
-        address = new ArrayList<String>(copy.address);
+        lines = new ArrayList<String>(copy.lines);
         city = copy.city;
         state = copy.state;
         zip = copy.zip;
@@ -90,28 +90,28 @@ public class RawAddress implements Serializable {
     public String getHint(String name){
         return hints == null ? null : hints.get(name);
     }
-    
+
 
     public boolean hasHints(){
         return hints == null || hints.isEmpty();
     }
 
     /**
-     * @return address lines. never null - but perhaps empty
+     * @return lines . never null - but perhaps empty
      */
-    public List<String> getAddress() {
-        return address;
+    public List<String> getAddressLines() {
+        return lines;
     }
 
     /**
      *
-     * @param address to add. Existing entries are replaced.  Null and empty address lines are ignored.
+     * @param lines to add. Existing entries are replaced.  Null and empty lines lines are ignored.
      */
-    public void setAddress(List<String> address) {
-        this.address.clear();
-        if (address != null && !address.isEmpty()){
-            for (String addr : address){
-                addAddress(addr);
+    public void setAddressLines(List<String> lines) {
+        this.lines.clear();
+        if (lines != null && !lines.isEmpty()){
+            for (String addr : lines){
+                addAddressLine(addr);
             }
         }
 
@@ -119,13 +119,13 @@ public class RawAddress implements Serializable {
 
     /**
      *
-     * @param address address line to append. Will be trimmed of leading and trailing whitespace. null and empty address lines are ignored.
+     * @param lines lines line to append. Will be trimmed of leading and trailing whitespace. null and empty lines lines are ignored.
      */
-    public void addAddress(String address) {
-        if (address != null){
-            address = address.trim();
-            if (!address.isEmpty()){
-                this.address.add(address);
+    public void addAddressLine(String line) {
+        if (line != null){
+            line = line.trim();
+            if (!line.isEmpty()){
+                this.lines.add(line);
             }
         }
     }
@@ -201,7 +201,7 @@ public class RawAddress implements Serializable {
     public String toString() {
 
         return new ToStringBuilder(this).
-                append("address", address).
+                append("lines", lines).
                 append("city", city).
                 append("state", state).
                 append("zip", zip).
@@ -211,7 +211,7 @@ public class RawAddress implements Serializable {
     @Override
     public int hashCode(){
         int hash = 5;
-        hash = 73 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 73 * hash + (this.lines != null ? this.lines.hashCode() : 0);
         hash = 73 * hash + (this.city != null ? this.city.hashCode() : 0);
         hash = 73 * hash + (this.state != null ? this.state.hashCode() : 0);
         hash = 73 * hash + (this.zip != null ? this.zip.hashCode() : 0);
@@ -228,7 +228,7 @@ public class RawAddress implements Serializable {
             return false;
         }
         final RawAddress other = (RawAddress) obj;
-        if (this.address != other.address && (this.address == null || !this.address.equals(other.address))){
+        if (this.lines != other.lines && (this.lines == null || !this.lines.equals(other.lines))){
             return false;
         }
         if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)){
