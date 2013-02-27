@@ -100,7 +100,7 @@ public class RawAddress implements Serializable {
     }
 
     public boolean hasHints(){
-        return hints == null || hints.isEmpty();
+        return hints != null && !hints.isEmpty();
     }
 
     /**
