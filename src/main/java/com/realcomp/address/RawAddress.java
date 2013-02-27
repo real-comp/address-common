@@ -91,6 +91,13 @@ public class RawAddress implements Serializable {
         return hints == null ? null : hints.get(name);
     }
 
+    public Map<String, String> getHints(){
+        return hints;
+    }
+
+    public void setHints(Map<String, String> hints){
+        this.hints = hints;
+    }
 
     public boolean hasHints(){
         return hints == null || hints.isEmpty();
