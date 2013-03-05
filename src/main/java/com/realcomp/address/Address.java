@@ -155,8 +155,9 @@ public class Address implements Serializable {
         StringAppender sa = new StringAppender(" ");
         sa.append(address.toString());
         sa.append(city);
-        if (city != null && state != null && !city.isEmpty() && !state.isEmpty())
+        if (city != null && state != null && !city.isEmpty() && !state.isEmpty()){
             sa.append(",", "");
+        }
         sa.append(state);
         sa.append(zip);
         if (fips != null) {
