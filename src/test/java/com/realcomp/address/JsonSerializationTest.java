@@ -23,7 +23,7 @@ public class JsonSerializationTest {
     
     
     @Test
-    public void testSerialization() throws IOException{
+    public void testAddressSerialization() throws IOException{
         
         
         ObjectMapper jackson = new ObjectMapper();
@@ -53,6 +53,31 @@ public class JsonSerializationTest {
         
         System.out.println(json);
         Address actual = jackson.readValue(json, Address.class);
+        
+        assertEquals(expected, actual);
+        
+        
+    }
+    
+    
+    @Test
+    public void testRawAddressSerialization() throws IOException{
+        
+        
+        ObjectMapper jackson = new ObjectMapper();
+        
+        jackson.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+
+        
+        
+        RawAddress expected = new RawAddress();
+        expected.addAddressLine("8665 EPHRAIM RD");
+        expected.addAddressLine("AUSTIN, TX  78717");
+        expected.setHint("fips","48491");
+        String json = jackson.writeValueAsString(expected);
+        
+        System.out.println(json);
+        RawAddress actual = jackson.readValue(json, RawAddress.class);
         
         assertEquals(expected, actual);
         
