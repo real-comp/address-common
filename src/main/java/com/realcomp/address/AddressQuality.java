@@ -1,37 +1,19 @@
 package com.realcomp.address;
 
-/**
- *
- * @author BGoering
- */
+
+
 public enum AddressQuality {
 
-    VALID,
-    UNCONFIRMED_UNIT,
-    MISSING_UNIT,
-    INVALID,
-    ERROR;
-
-    /**
-     * Says if Address is a deliverable USPS address
-     * @return true if address is VALID, UNCONFIRMED_UNIT, or MISSING_UNIT or false if INVALID or
-     * ERROR
-     */
-    public boolean isDeliverable() {
-
-        switch(this){
-            case VALID:
-            case UNCONFIRMED_UNIT:
-            case MISSING_UNIT:
-                return true;
-        }
-        return false;
-    }
-
+    VALID, //Address was DPV confirmed for both primary and (if present) secondary numbers.
+    UNCONFIRMED_UNIT, //Address was DPV confirmed for the primary number only, and Secondary number information was missing.
+    MISSING_UNIT, //Address was DPV confirmed for the primary number only, and Secondary number information was present but unconfirmed.
+    INVALID, //Both Primary and (if present) Secondary number information failed to DPV Confirm.
+    VACANT,
+    UNKNOWN;
 
     public static AddressQuality decode(String code){
 
-        AddressQuality quality = AddressQuality.ERROR;
+        AddressQuality quality = AddressQuality.UNKNOWN;
 
         if (code != null){
             if (code.startsWith("Y"))
@@ -42,8 +24,25 @@ public enum AddressQuality {
                 quality = AddressQuality.MISSING_UNIT;
             else if (code.startsWith("N"))
                 quality = AddressQuality.INVALID;
+
+            if (code.length() >= 4){
+                if (code.charAt(3) == 'Y'){
+                    quality = AddressQuality.VACANT;
+                }
+            }
         }
 
         return quality;
+    }
+
+    public boolean isDeliverable(){
+        switch(this){
+            case VALID:
+            case UNCONFIRMED_UNIT:
+            case MISSING_UNIT:
+                return true;
+            default:
+                return false;
+        }
     }
 }

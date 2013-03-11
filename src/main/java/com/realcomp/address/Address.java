@@ -22,7 +22,7 @@ public class Address implements Serializable {
     private LatLongAccuracy latLongAccuracy;
     private AddressType type;
     private AddressQuality quality;
-
+    
     /*
      * Including the parsed address for legacy (ash) purposes.
      * Eventually, a full text search of the address line should satisfy walk-the-street searches.
