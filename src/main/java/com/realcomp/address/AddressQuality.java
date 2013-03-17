@@ -8,7 +8,6 @@ public enum AddressQuality {
     UNCONFIRMED_UNIT, //Address was DPV confirmed for the primary number only, and Secondary number information was missing.
     MISSING_UNIT, //Address was DPV confirmed for the primary number only, and Secondary number information was present but unconfirmed.
     INVALID, //Both Primary and (if present) Secondary number information failed to DPV Confirm.
-    VACANT, //A delivery point was active in the past, but is currently vacant (in most cases, unoccupied over 90 days) and not receiving delivery.
     UNKNOWN;
 
     public static AddressQuality decode(String code){
@@ -24,12 +23,6 @@ public enum AddressQuality {
                 quality = AddressQuality.MISSING_UNIT;
             else if (code.startsWith("N"))
                 quality = AddressQuality.INVALID;
-
-            if (code.length() >= 4){
-                if (code.charAt(3) == 'Y'){
-                    quality = AddressQuality.VACANT;
-                }
-            }
         }
 
         return quality;

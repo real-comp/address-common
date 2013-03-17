@@ -23,6 +23,9 @@ public class Address implements Serializable {
     private AddressType type;
     private AddressQuality quality;
     
+    
+    private boolean vacant = false;
+    
     /*
      * Including the parsed address for legacy (ash) purposes.
      * Eventually, a full text search of the address line should satisfy walk-the-street searches.
@@ -46,6 +49,7 @@ public class Address implements Serializable {
         latLongAccuracy = copy.latLongAccuracy;
         type = copy.type;
         quality = copy.quality;
+        vacant = copy.vacant;
 
         if (copy.parsed != null){
             parsed = new ParsedStreetAddress(copy.parsed);
@@ -150,6 +154,20 @@ public class Address implements Serializable {
         this.parsed = parsed;
     }
 
+    /**
+     * A delivery point was active in the past, but is currently vacant 
+     * (in most cases, unoccupied over 90 days) and not receiving delivery.
+     * @return 
+     */
+    public boolean isVacant() {
+        return vacant;
+    }
+
+    public void setVacant(boolean vacant) {
+        this.vacant = vacant;
+    }
+        
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");
@@ -169,69 +187,74 @@ public class Address implements Serializable {
     }
 
     @Override
-    public int hashCode(){
-        int hash = 7;
-        hash = 89 * hash + (this.address != null ? this.address.hashCode() : 0);
-        hash = 89 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 89 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 89 * hash + (this.zip != null ? this.zip.hashCode() : 0);
-        hash = 89 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 89 * hash + (this.fips != null ? this.fips.hashCode() : 0);
-        hash = 89 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
-        hash = 89 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
-        hash = 89 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
-        hash = 89 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = 89 * hash + (this.quality != null ? this.quality.hashCode() : 0);
-        hash = 89 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 37 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 37 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 37 * hash + (this.zip != null ? this.zip.hashCode() : 0);
+        hash = 37 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
+        hash = 37 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        hash = 37 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
+        hash = 37 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
+        hash = 37 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
+        hash = 37 * hash + (this.type != null ? this.type.hashCode() : 0);
+        hash = 37 * hash + (this.quality != null ? this.quality.hashCode() : 0);
+        hash = 37 * hash + (this.vacant ? 1 : 0);
+        hash = 37 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj){
-        if (obj == null){
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()){
+        if (getClass() != obj.getClass()) {
             return false;
         }
         final Address other = (Address) obj;
-        if ((this.address == null) ? (other.address != null) : !this.address.equals(other.address)){
+        if ((this.address == null) ? (other.address != null) : !this.address.equals(other.address)) {
             return false;
         }
-        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)){
+        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)) {
             return false;
         }
-        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)){
+        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)) {
             return false;
         }
-        if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip)){
+        if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip)) {
             return false;
         }
-        if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)){
+        if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)) {
             return false;
         }
-        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips)){
+        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips)) {
             return false;
         }
-        if (this.latitude != other.latitude && (this.latitude == null || !this.latitude.equals(other.latitude))){
+        if (this.latitude != other.latitude && (this.latitude == null || !this.latitude.equals(other.latitude))) {
             return false;
         }
-        if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude))){
+        if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude))) {
             return false;
         }
-        if (this.latLongAccuracy != other.latLongAccuracy){
+        if (this.latLongAccuracy != other.latLongAccuracy) {
             return false;
         }
-        if (this.type != other.type){
+        if (this.type != other.type) {
             return false;
         }
-        if (this.quality != other.quality){
+        if (this.quality != other.quality) {
             return false;
         }
-        if (this.parsed != other.parsed && (this.parsed == null || !this.parsed.equals(other.parsed))){
+        if (this.vacant != other.vacant) {
+            return false;
+        }
+        if (this.parsed != other.parsed && (this.parsed == null || !this.parsed.equals(other.parsed))) {
             return false;
         }
         return true;
     }
+
 
 }
