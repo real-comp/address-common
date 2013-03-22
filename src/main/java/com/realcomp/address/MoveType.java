@@ -2,29 +2,20 @@ package com.realcomp.address;
 
 public enum MoveType {
 
-    MOVED,
-    MOVED_NO_FORWARDING_ADDRESS,
-    MOVED_FOREIGN,
-    PO_BOX_CLOSED;
+    BUSINESS,
+    INDIVIDUAL,
+    FAMILY;
 
-    /**
-     * Decode the Accuzip matchflag field to determine the type of move.
-     * @param code
-     * @return MoveType or null if not moved.
-     */
     public static MoveType decode(String code){
 
         MoveType moveType = null;
-
         if (code != null){
-            if (code.startsWith("M"))
-                moveType = MOVED;
-            else if (code.startsWith("G"))
-                moveType = PO_BOX_CLOSED;
-            else if (code.startsWith("K"))
-                moveType = MOVED_NO_FORWARDING_ADDRESS;
-            else if (code.startsWith("F"))
-                moveType = MOVED_FOREIGN;
+            if (code.equals("B"))
+                moveType = BUSINESS;
+            else if (code.equals("I"))
+                moveType = INDIVIDUAL;
+            else if (code.equals("F"))
+                moveType = FAMILY;
         }
 
         return moveType;
