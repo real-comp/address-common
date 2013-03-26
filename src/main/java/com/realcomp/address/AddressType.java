@@ -45,4 +45,27 @@ public enum AddressType {
 
         return type;
     }
+    
+    public String encode(){
+
+        switch(this){
+            case FIRM:
+                return "F";
+            case GENERAL:
+                return "G";
+            case HIGHRISE:
+                return "H";
+            case POBOX:
+                return "P";
+            case RURAL_ROUTE:
+                return "R";
+            case STREET:
+                return "S";
+            case UNKNOWN:
+                return "0";
+        }
+        
+        return "0"; //unknown
+    }
+    
 }

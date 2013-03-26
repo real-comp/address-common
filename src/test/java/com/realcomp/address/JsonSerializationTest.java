@@ -1,10 +1,13 @@
 package com.realcomp.address;
 
 import java.io.IOException;
+import org.codehaus.jackson.map.AnnotationIntrospector;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
+import org.codehaus.jackson.map.SerializationConfig.Feature;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -26,17 +29,14 @@ public class JsonSerializationTest {
     public void testAddressSerialization() throws IOException{
         
         
-        ObjectMapper jackson = new ObjectMapper();
-        
+        ObjectMapper jackson = new ObjectMapper();            
         jackson.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
 
-        
-        
         Address expected = new Address();
         expected.setAddress("8665 EPHRAIM RD");
         expected.setCity("AUSTIN");
         expected.setState("TX");
-        expected.setZip("78717");
+        expected.setZip5("78717");
         expected.setCrrt("C100");
         expected.setLatitude(2d);
         expected.setLongitude(3d);
@@ -64,8 +64,8 @@ public class JsonSerializationTest {
     public void testRawAddressSerialization() throws IOException{
         
         
-        ObjectMapper jackson = new ObjectMapper();
-        
+        ObjectMapper jackson = new ObjectMapper();        
+        jackson.getSerializationConfig().with(Feature.REQUIRE_SETTERS_FOR_GETTERS); 
         jackson.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
 
         

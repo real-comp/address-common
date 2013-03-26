@@ -14,23 +14,18 @@ public class Address implements Serializable {
     private String address;
     private String city;
     private String state;
-    private String zip;
-    private String crrt;
+    private String zip5;
+    private String zip4;
+    private String crrt;    
     private String fips;
     private Double latitude;
     private Double longitude;
+    private String deliveryPoint;
+    private String dpvFlag;
     private LatLongAccuracy latLongAccuracy;
     private AddressType type;
     private AddressQuality quality;
-    
-    
     private boolean vacant = false;
-    
-    /*
-     * Including the parsed address for legacy (ash) purposes.
-     * Eventually, a full text search of the address line should satisfy walk-the-street searches.
-     * Alternatively, if we had a reliable address parser, this could be eliminated.
-     */
     private ParsedStreetAddress parsed;
 
 
@@ -41,7 +36,8 @@ public class Address implements Serializable {
         address = copy.address;
         city = copy.city;
         state = copy.state;
-        zip = copy.zip;
+        zip5 = copy.zip5;
+        zip4 = copy.zip4;
         crrt = copy.crrt;
         fips = copy.fips;
         latitude = copy.latitude;
@@ -50,6 +46,8 @@ public class Address implements Serializable {
         type = copy.type;
         quality = copy.quality;
         vacant = copy.vacant;
+        deliveryPoint = copy.deliveryPoint;
+        dpvFlag = copy.dpvFlag;
 
         if (copy.parsed != null){
             parsed = new ParsedStreetAddress(copy.parsed);
@@ -130,14 +128,22 @@ public class Address implements Serializable {
         this.state = state;
     }
 
-    public String getZip() {
-        return zip;
+    public String getZip5() {
+        return zip5;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setZip5(String zip5) {
+        this.zip5 = zip5;
     }
 
+    public String getZip4() {
+        return zip4;
+    }
+
+    public void setZip4(String zip4) {
+        this.zip4 = zip4;
+    }
+    
     public LatLongAccuracy getLatLongAccuracy() {
         return latLongAccuracy;
     }
@@ -166,8 +172,30 @@ public class Address implements Serializable {
     public void setVacant(boolean vacant) {
         this.vacant = vacant;
     }
-        
 
+    /**
+     * 
+     * @return delivery point
+     */
+    public String getDeliveryPoint() {
+        return deliveryPoint;
+    }
+
+    public void setDeliveryPoint(String dp) {
+        this.deliveryPoint = dp;
+    }
+
+    /**
+     * @return vendor dpv flag (e.g., "BB", "CC", "N1", "M1", "M3", ...)
+     */
+    public String getDpvFlag() {
+        return dpvFlag;
+    }
+
+    public void setDpvFlag(String dpvFlag) {
+        this.dpvFlag = dpvFlag;
+    }
+    
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");
@@ -177,9 +205,9 @@ public class Address implements Serializable {
             sa.append(",", "");
         }
         sa.append(state);
-        sa.append(zip);
+        sa.append(zip5);
         if (fips != null) {
-            sa.append("[fips:");
+            sa.append(" [fips:");
             sa.append(fips, "");
             sa.append("]", "");
         }
@@ -189,19 +217,22 @@ public class Address implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 37 * hash + (this.address != null ? this.address.hashCode() : 0);
-        hash = 37 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 37 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 37 * hash + (this.zip != null ? this.zip.hashCode() : 0);
-        hash = 37 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 37 * hash + (this.fips != null ? this.fips.hashCode() : 0);
-        hash = 37 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
-        hash = 37 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
-        hash = 37 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
-        hash = 37 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = 37 * hash + (this.quality != null ? this.quality.hashCode() : 0);
-        hash = 37 * hash + (this.vacant ? 1 : 0);
-        hash = 37 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
+        hash = 47 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 47 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 47 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 47 * hash + (this.zip5 != null ? this.zip5.hashCode() : 0);
+        hash = 47 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
+        hash = 47 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
+        hash = 47 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        hash = 47 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
+        hash = 47 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
+        hash = 47 * hash + (this.deliveryPoint != null ? this.deliveryPoint.hashCode() : 0);
+        hash = 47 * hash + (this.dpvFlag != null ? this.dpvFlag.hashCode() : 0);
+        hash = 47 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
+        hash = 47 * hash + (this.type != null ? this.type.hashCode() : 0);
+        hash = 47 * hash + (this.quality != null ? this.quality.hashCode() : 0);
+        hash = 47 * hash + (this.vacant ? 1 : 0);
+        hash = 47 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
         return hash;
     }
 
@@ -223,7 +254,10 @@ public class Address implements Serializable {
         if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)) {
             return false;
         }
-        if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip)) {
+        if ((this.zip5 == null) ? (other.zip5 != null) : !this.zip5.equals(other.zip5)) {
+            return false;
+        }
+        if ((this.zip4 == null) ? (other.zip4 != null) : !this.zip4.equals(other.zip4)) {
             return false;
         }
         if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)) {
@@ -236,6 +270,12 @@ public class Address implements Serializable {
             return false;
         }
         if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude))) {
+            return false;
+        }
+        if ((this.deliveryPoint == null) ? (other.deliveryPoint != null) : !this.deliveryPoint.equals(other.deliveryPoint)) {
+            return false;
+        }
+        if ((this.dpvFlag == null) ? (other.dpvFlag != null) : !this.dpvFlag.equals(other.dpvFlag)) {
             return false;
         }
         if (this.latLongAccuracy != other.latLongAccuracy) {
@@ -255,6 +295,4 @@ public class Address implements Serializable {
         }
         return true;
     }
-
-
 }

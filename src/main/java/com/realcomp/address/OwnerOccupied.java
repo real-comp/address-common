@@ -86,9 +86,9 @@ public class OwnerOccupied {
     protected static boolean isSameZip(Address a, Address b){
         assert(a != null);
         assert(b != null);
-        return a.getZip() != null 
-                && b.getZip() != null 
-                && a.getZip().equals(b.getZip());
+        return a.getZip5() != null 
+                && b.getZip5() != null 
+                && a.getZip5().equals(b.getZip5());
     }
     
     protected static boolean isDeliverable(Address a, Address b){

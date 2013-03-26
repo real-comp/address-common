@@ -2,10 +2,7 @@ package com.realcomp.address;
 
 import java.io.Serializable;
 
-/**
- *
- * @author BGoering
- */
+
 public class ParsedStreetAddress implements Serializable {
 
     private String houseNum;
@@ -15,7 +12,7 @@ public class ParsedStreetAddress implements Serializable {
     private String postDir;
     private String unitAbbrev;
     private String unit;
-
+    
     public ParsedStreetAddress(){
     }
 
@@ -84,6 +81,8 @@ public class ParsedStreetAddress implements Serializable {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+    
+    
 
     @Override
     public String toString() {

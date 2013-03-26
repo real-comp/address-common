@@ -23,19 +23,19 @@ public class OwnerOccupiedTest {
         Address a = new Address();
         a.setAddress("12345 main st");
         a.setQuality(AddressQuality.VALID);
-        a.setZip("12345");
+        a.setZip5("12345");
 
         Address b = new Address();
         b.setAddress("12345 main st");
         b.setQuality(AddressQuality.VALID);
-        b.setZip("12345");
+        b.setZip5("12345");
 
         assertTrue(OwnerOccupied.isOwnerOccupied(a, b));
 
          b = new Address();
         b.setAddress("12345 main");
         b.setQuality(AddressQuality.MISSING_UNIT);
-        b.setZip("12345");
+        b.setZip5("12345");
 
         assertTrue(OwnerOccupied.isOwnerOccupied(a, b));
 
@@ -89,23 +89,26 @@ public class OwnerOccupiedTest {
     public void testIsSameZip() {
 
         Address a = new Address();
-        a.setZip("12345");
+        a.setZip5("12345");
         Address b = new Address();
-        b.setZip("12345");
+        b.setZip5("12345");
         assertTrue(OwnerOccupied.isSameZip(a, b));
 
-        a.setZip("12345-1234");
-        b.setZip("12345-1234");
+        a.setZip5("12345");
+        a.setZip4("1234");
+        
+        b.setZip5("12345");
+        b.setZip4("1234");
         assertTrue(OwnerOccupied.isSameZip(a, b));
 
-        b.setZip(null);
+        b.setZip5(null);
         assertFalse(OwnerOccupied.isSameZip(a, b));
 
-        a.setZip(null);
+        a.setZip5(null);
         assertFalse(OwnerOccupied.isSameZip(a, b));
 
-        a.setZip("12345");
-        b.setZip("54321");
+        a.setZip5("12345");
+        b.setZip5("54321");
         assertFalse(OwnerOccupied.isSameZip(a, b));
     }
 
