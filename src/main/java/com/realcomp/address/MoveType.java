@@ -20,4 +20,16 @@ public enum MoveType {
 
         return moveType;
     }
+
+    public String encode(){
+        switch(this){
+            case BUSINESS:
+                return "B";
+            case INDIVIDUAL:
+                return "I";
+            case FAMILY:
+                return "F";
+        }
+        throw new IllegalStateException("No code known for MoveType: " + this);
+    }
 }
