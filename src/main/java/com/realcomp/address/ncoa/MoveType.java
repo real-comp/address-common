@@ -1,4 +1,4 @@
-package com.realcomp.address;
+package com.realcomp.address.ncoa;
 
 public enum MoveType {
 
