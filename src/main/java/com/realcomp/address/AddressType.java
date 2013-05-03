@@ -38,14 +38,14 @@ public enum AddressType {
         else if (code.equals("0")){
             type = AddressType.UNKNOWN;
         }
-        else if (code != null && !code.trim().isEmpty()){
+        else if (!code.trim().isEmpty()){
             logger.log(Level.WARNING, "Unhandled AddressType: [{0}]", code);
             type = AddressType.UNKNOWN;
         }
 
         return type;
     }
-    
+
     public String encode(){
 
         switch(this){
@@ -64,8 +64,8 @@ public enum AddressType {
             case UNKNOWN:
                 return "0";
         }
-        
+
         return "0"; //unknown
     }
-    
+
 }

@@ -25,4 +25,16 @@ public class RawAddressTest{
         assertTrue(raw.hasHints());
 
     }
+
+    @Test
+    public void testCopyConstructor(){
+        RawAddress original = new RawAddress();
+        original.setHint("asdf","1234");
+
+        assertEquals("1234", original.getHint("asdf"));
+
+        RawAddress copy = new RawAddress(original);
+        assertEquals("1234", copy.getHint("asdf"));
+
+    }
 }
