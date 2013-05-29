@@ -23,7 +23,7 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.github.krenfro</groupId>
-                        <artifactId>checkstyle</artifactId>
+                        <artifactId>checkstyle-ignore-generated</artifactId>
                         <version>0.0.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
