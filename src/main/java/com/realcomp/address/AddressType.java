@@ -23,18 +23,24 @@ public enum AddressType {
 
         AddressType type = null;
 
-        if (code.equals("S"))
+        if (code.equals("S")){
             type = AddressType.STREET;
-        else if (code.equals("H"))
+        }
+        else if (code.equals("H")){
             type = AddressType.HIGHRISE;
-        else if (code.equals("P"))
+        }
+        else if (code.equals("P")){
             type = AddressType.POBOX;
-        else if (code.equals("R"))
+        }
+        else if (code.equals("R")){
             type = AddressType.RURAL_ROUTE;
-        else if (code.equals("G"))
+        }
+        else if (code.equals("G")){
             type = AddressType.GENERAL;
-        else if (code.equals("F"))
+        }
+        else if (code.equals("F")){
             type = AddressType.FIRM;
+        }
         else if (code.equals("0")){
             type = AddressType.UNKNOWN;
         }

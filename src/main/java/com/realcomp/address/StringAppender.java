@@ -1,5 +1,7 @@
 package com.realcomp.address;
 
+import javax.annotation.Generated;
+
 /**
  * Appends strings to the end of an existing string with a String delimiter (often a space)
  * @author BGoering
@@ -15,8 +17,9 @@ public class StringAppender {
     }
 
     public StringAppender(String delimiter){
-        if (delimiter == null)
+        if (delimiter == null){
             throw new IllegalArgumentException("delimiter is null");
+        }
         sb = new StringBuilder();
         this.delimiter = delimiter;
     }
@@ -45,8 +48,9 @@ public class StringAppender {
      */
     public void append(String inData, String delimiter) {
         if (inData != null && !inData.isEmpty()) {
-            if (delimiter != null && !empty)
+            if (delimiter != null && !empty){
                 sb.append(delimiter);
+            }
             sb.append(inData);
             empty = false;
         }
@@ -57,29 +61,35 @@ public class StringAppender {
         return sb.toString();
     }
 
+    @Generated("NetBeans")
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final StringAppender other = (StringAppender) obj;
-        if (this.sb != other.sb && (this.sb == null || !this.sb.equals(other.sb)))
-            return false;
-        if ((this.delimiter == null) ? (other.delimiter != null)
-                : !this.delimiter.equals(other.delimiter))
-            return false;
-        if (this.empty != other.empty)
-            return false;
-        return true;
+    public int hashCode(){
+        int hash = 7;
+        hash = 53 * hash + (this.sb != null ? this.sb.hashCode() : 0);
+        hash = 53 * hash + (this.delimiter != null ? this.delimiter.hashCode() : 0);
+        hash = 53 * hash + (this.empty ? 1 : 0);
+        return hash;
     }
 
+    @Generated("NetBeans")
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + (this.sb != null ? this.sb.hashCode() : 0);
-        hash = 13 * hash + (this.delimiter != null ? this.delimiter.hashCode() : 0);
-        hash = 13 * hash + (this.empty ? 1 : 0);
-        return hash;
+    public boolean equals(Object obj){
+        if (obj == null){
+            return false;
+        }
+        if (getClass() != obj.getClass()){
+            return false;
+        }
+        final StringAppender other = (StringAppender) obj;
+        if (this.sb != other.sb && (this.sb == null || !this.sb.equals(other.sb))){
+            return false;
+        }
+        if ((this.delimiter == null) ? (other.delimiter != null) : !this.delimiter.equals(other.delimiter)){
+            return false;
+        }
+        if (this.empty != other.empty){
+            return false;
+        }
+        return true;
     }
 }

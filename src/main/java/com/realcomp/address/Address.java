@@ -1,6 +1,7 @@
 package com.realcomp.address;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,7 +17,7 @@ public class Address implements Serializable {
     private String state;
     private String zip5;
     private String zip4;
-    private String crrt;    
+    private String crrt;
     private String fips;
     private Double latitude;
     private Double longitude;
@@ -143,7 +144,7 @@ public class Address implements Serializable {
     public void setZip4(String zip4) {
         this.zip4 = zip4;
     }
-    
+
     public LatLongAccuracy getLatLongAccuracy() {
         return latLongAccuracy;
     }
@@ -161,9 +162,9 @@ public class Address implements Serializable {
     }
 
     /**
-     * A delivery point was active in the past, but is currently vacant 
+     * A delivery point was active in the past, but is currently vacant
      * (in most cases, unoccupied over 90 days) and not receiving delivery.
-     * @return 
+     * @return
      */
     public boolean isVacant() {
         return vacant;
@@ -174,7 +175,7 @@ public class Address implements Serializable {
     }
 
     /**
-     * 
+     *
      * @return delivery point
      */
     public String getDeliveryPoint() {
@@ -195,11 +196,11 @@ public class Address implements Serializable {
     public void setDpvFlag(String dpvFlag) {
         this.dpvFlag = dpvFlag;
     }
-    
+
     @Override
     public String toString() {
         StringAppender sa = new StringAppender(" ");
-        sa.append(address.toString());
+        sa.append(address);
         sa.append(city);
         if (city != null && state != null && !city.isEmpty() && !state.isEmpty()){
             sa.append(",", "");
@@ -214,83 +215,84 @@ public class Address implements Serializable {
         return sa.toString().trim();
     }
 
+    @Generated("NetBeans")
     @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + (this.address != null ? this.address.hashCode() : 0);
-        hash = 47 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 47 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 47 * hash + (this.zip5 != null ? this.zip5.hashCode() : 0);
-        hash = 47 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
-        hash = 47 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 47 * hash + (this.fips != null ? this.fips.hashCode() : 0);
-        hash = 47 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
-        hash = 47 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
-        hash = 47 * hash + (this.deliveryPoint != null ? this.deliveryPoint.hashCode() : 0);
-        hash = 47 * hash + (this.dpvFlag != null ? this.dpvFlag.hashCode() : 0);
-        hash = 47 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
-        hash = 47 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = 47 * hash + (this.quality != null ? this.quality.hashCode() : 0);
-        hash = 47 * hash + (this.vacant ? 1 : 0);
-        hash = 47 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
+    public int hashCode(){
+        int hash = 7;
+        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 97 * hash + (this.zip5 != null ? this.zip5.hashCode() : 0);
+        hash = 97 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
+        hash = 97 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
+        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        hash = 97 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
+        hash = 97 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
+        hash = 97 * hash + (this.deliveryPoint != null ? this.deliveryPoint.hashCode() : 0);
+        hash = 97 * hash + (this.dpvFlag != null ? this.dpvFlag.hashCode() : 0);
+        hash = 97 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
+        hash = 97 * hash + (this.type != null ? this.type.hashCode() : 0);
+        hash = 97 * hash + (this.quality != null ? this.quality.hashCode() : 0);
+        hash = 97 * hash + (this.vacant ? 1 : 0);
+        hash = 97 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object obj){
+        if (obj == null){
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass()){
             return false;
         }
         final Address other = (Address) obj;
-        if ((this.address == null) ? (other.address != null) : !this.address.equals(other.address)) {
+        if ((this.address == null) ? (other.address != null) : !this.address.equals(other.address)){
             return false;
         }
-        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)) {
+        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)){
             return false;
         }
-        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)) {
+        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)){
             return false;
         }
-        if ((this.zip5 == null) ? (other.zip5 != null) : !this.zip5.equals(other.zip5)) {
+        if ((this.zip5 == null) ? (other.zip5 != null) : !this.zip5.equals(other.zip5)){
             return false;
         }
-        if ((this.zip4 == null) ? (other.zip4 != null) : !this.zip4.equals(other.zip4)) {
+        if ((this.zip4 == null) ? (other.zip4 != null) : !this.zip4.equals(other.zip4)){
             return false;
         }
-        if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)) {
+        if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)){
             return false;
         }
-        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips)) {
+        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips)){
             return false;
         }
-        if (this.latitude != other.latitude && (this.latitude == null || !this.latitude.equals(other.latitude))) {
+        if (this.latitude != other.latitude && (this.latitude == null || !this.latitude.equals(other.latitude))){
             return false;
         }
-        if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude))) {
+        if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude))){
             return false;
         }
-        if ((this.deliveryPoint == null) ? (other.deliveryPoint != null) : !this.deliveryPoint.equals(other.deliveryPoint)) {
+        if ((this.deliveryPoint == null) ? (other.deliveryPoint != null) : !this.deliveryPoint.equals(other.deliveryPoint)){
             return false;
         }
-        if ((this.dpvFlag == null) ? (other.dpvFlag != null) : !this.dpvFlag.equals(other.dpvFlag)) {
+        if ((this.dpvFlag == null) ? (other.dpvFlag != null) : !this.dpvFlag.equals(other.dpvFlag)){
             return false;
         }
-        if (this.latLongAccuracy != other.latLongAccuracy) {
+        if (this.latLongAccuracy != other.latLongAccuracy){
             return false;
         }
-        if (this.type != other.type) {
+        if (this.type != other.type){
             return false;
         }
-        if (this.quality != other.quality) {
+        if (this.quality != other.quality){
             return false;
         }
-        if (this.vacant != other.vacant) {
+        if (this.vacant != other.vacant){
             return false;
         }
-        if (this.parsed != other.parsed && (this.parsed == null || !this.parsed.equals(other.parsed))) {
+        if (this.parsed != other.parsed && (this.parsed == null || !this.parsed.equals(other.parsed))){
             return false;
         }
         return true;

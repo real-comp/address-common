@@ -1,6 +1,7 @@
 package com.realcomp.address.ncoa;
 
 import com.realcomp.address.Address;
+import javax.annotation.Generated;
 
 public class MovedAddress {
 
@@ -73,6 +74,7 @@ public class MovedAddress {
         this.dateChecked = dateChecked;
     }
 
+    @Generated("NetBeans")
     @Override
     public int hashCode(){
         int hash = 3;
@@ -85,6 +87,7 @@ public class MovedAddress {
         return hash;
     }
 
+    @Generated("NetBeans")
     @Override
     public boolean equals(Object obj){
         if (obj == null){
@@ -114,5 +117,7 @@ public class MovedAddress {
         }
         return true;
     }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.realcomp.address;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 /**
  *
@@ -83,6 +84,7 @@ public class Geolocation implements Serializable {
         this.censusBlockGroup = censusBlockGroup;
     }
 
+    @Generated("NetBeans")
     @Override
     public int hashCode(){
         int hash = 7;
@@ -94,6 +96,7 @@ public class Geolocation implements Serializable {
         return hash;
     }
 
+    @Generated("NetBeans")
     @Override
     public boolean equals(Object obj){
         if (obj == null){

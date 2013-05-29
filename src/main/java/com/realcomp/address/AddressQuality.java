@@ -15,14 +15,18 @@ public enum AddressQuality {
         AddressQuality quality = AddressQuality.UNKNOWN;
 
         if (code != null){
-            if (code.startsWith("Y"))
+            if (code.startsWith("Y")){
                 quality = AddressQuality.VALID;
-            else if (code.startsWith("S"))
+            }
+            else if (code.startsWith("S")){
                 quality = AddressQuality.UNCONFIRMED_UNIT;
-            else if (code.startsWith("D"))
+            }
+            else if (code.startsWith("D")){
                 quality = AddressQuality.MISSING_UNIT;
-            else if (code.startsWith("N"))
+            }
+            else if (code.startsWith("N")){
                 quality = AddressQuality.INVALID;
+            }
         }
 
         return quality;

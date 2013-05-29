@@ -10,12 +10,15 @@ public enum MoveType {
 
         MoveType moveType = null;
         if (code != null){
-            if (code.equals("B"))
+            if (code.equals("B")){
                 moveType = BUSINESS;
-            else if (code.equals("I"))
+            }
+            else if (code.equals("I")){
                 moveType = INDIVIDUAL;
-            else if (code.equals("F"))
+            }
+            else if (code.equals("F")){
                 moveType = FAMILY;
+            }
         }
 
         return moveType;

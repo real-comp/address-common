@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Generated;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -38,12 +39,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 public class RawAddress implements Serializable {
 
-    public static String HINT_FIPS = "fips";
-    public static String HINT_ADDRESS = "address";
-    public static String HINT_CITY = "city";
-    public static String HINT_STATE = "state";
-    public static String HINT_ZIP = "zip";
-    public static String HINT_JURISCITY = "jurisCity";
+    public static final String HINT_FIPS = "fips";
+    public static final String HINT_ADDRESS = "address";
+    public static final String HINT_CITY = "city";
+    public static final String HINT_STATE = "state";
+    public static final String HINT_ZIP = "zip";
+    public static final String HINT_JURISCITY = "jurisCity";
 
 
     protected List<String> lines;
@@ -74,8 +75,9 @@ public class RawAddress implements Serializable {
      * @return previous value of the hint.
      */
     public String setHint(String name, String value){
-        if (name == null)
+        if (name == null){
             throw new IllegalArgumentException("hint name is null");
+        }
         if (hints == null){
             hints = new HashMap<String,String>();
         }
@@ -215,17 +217,19 @@ public class RawAddress implements Serializable {
                 append("hints", hints).toString();
     }
 
+    @Generated("NetBeans")
     @Override
     public int hashCode(){
-        int hash = 5;
-        hash = 73 * hash + (this.lines != null ? this.lines.hashCode() : 0);
-        hash = 73 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 73 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 73 * hash + (this.zip != null ? this.zip.hashCode() : 0);
-        hash = 73 * hash + (this.hints != null ? this.hints.hashCode() : 0);
+        int hash = 3;
+        hash = 79 * hash + (this.lines != null ? this.lines.hashCode() : 0);
+        hash = 79 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 79 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 79 * hash + (this.zip != null ? this.zip.hashCode() : 0);
+        hash = 79 * hash + (this.hints != null ? this.hints.hashCode() : 0);
         return hash;
     }
 
+    @Generated("NetBeans")
     @Override
     public boolean equals(Object obj){
         if (obj == null){

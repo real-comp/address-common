@@ -28,17 +28,20 @@ public class RawAddressParser {
         for (String addrLine : address) {
             String[] addrParts = addrLine.split(splitChar);
 
-            for (String addrPart : addrParts)
+            for (String addrPart : addrParts){
                 splitAddr.add(addrPart.trim());
+            }
         }
-        if (splitAddr != null && splitAddr.size() <= 10)
+        if (splitAddr.size() <= 10){
             rawAddress.setAddressLines(splitAddr);
+        }
     }
 
     private void extractZip(RawAddress rawAddress) {
 
-        if (rawAddress.getAddressLines().isEmpty() || (rawAddress.getZip() != null && !rawAddress.getZip().isEmpty()))
+        if (rawAddress.getAddressLines().isEmpty() || (rawAddress.getZip() != null && !rawAddress.getZip().isEmpty())){
             return;
+        }
         List<String> address = rawAddress.getAddressLines();
         int lastElement = address.size() - 1;
         Matcher m = zipPattern.matcher(address.get(lastElement));
@@ -48,7 +51,7 @@ public class RawAddressParser {
         }
         else {
             String lastLine = address.get(lastElement);
-            int lastSpace = lastLine.lastIndexOf(" ");
+            int lastSpace = lastLine.lastIndexOf(' ');
 
             if (lastSpace > 0) {
                 String lastWord = lastLine.substring(lastSpace + 1);
@@ -66,8 +69,9 @@ public class RawAddressParser {
 
         RawAddress modifiedAddr = new RawAddress(rawAddress);
 
-        if (modifiedAddr.getCity() == null || modifiedAddr.getCity().isEmpty())
+        if (modifiedAddr.getCity() == null || modifiedAddr.getCity().isEmpty()){
             splitAddress(modifiedAddr, ",");
+        }
 
         extractZip(modifiedAddr);
 

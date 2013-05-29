@@ -1,6 +1,7 @@
 package com.realcomp.address;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 
 
 public class ParsedStreetAddress implements Serializable {
@@ -12,7 +13,7 @@ public class ParsedStreetAddress implements Serializable {
     private String postDir;
     private String unitAbbrev;
     private String unit;
-    
+
     public ParsedStreetAddress(){
     }
 
@@ -81,8 +82,8 @@ public class ParsedStreetAddress implements Serializable {
     public void setUnit(String unit) {
         this.unit = unit;
     }
-    
-    
+
+
 
     @Override
     public String toString() {
@@ -97,44 +98,53 @@ public class ParsedStreetAddress implements Serializable {
         return sa.toString().trim();
     }
 
+    @Generated("NetBeans")
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null)
+    public int hashCode(){
+        int hash = 3;
+        hash = 53 * hash + (this.houseNum != null ? this.houseNum.hashCode() : 0);
+        hash = 53 * hash + (this.preDir != null ? this.preDir.hashCode() : 0);
+        hash = 53 * hash + (this.street != null ? this.street.hashCode() : 0);
+        hash = 53 * hash + (this.streetSuffix != null ? this.streetSuffix.hashCode() : 0);
+        hash = 53 * hash + (this.postDir != null ? this.postDir.hashCode() : 0);
+        hash = 53 * hash + (this.unitAbbrev != null ? this.unitAbbrev.hashCode() : 0);
+        hash = 53 * hash + (this.unit != null ? this.unit.hashCode() : 0);
+        return hash;
+    }
+
+    @Generated("NetBeans")
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null){
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()){
             return false;
+        }
         final ParsedStreetAddress other = (ParsedStreetAddress) obj;
-        if ((this.houseNum == null) ? (other.houseNum != null)
-                : !this.houseNum.equals(other.houseNum))
+        if ((this.houseNum == null) ? (other.houseNum != null) : !this.houseNum.equals(other.houseNum)){
             return false;
-        if ((this.preDir == null) ? (other.preDir != null) : !this.preDir.equals(other.preDir))
+        }
+        if ((this.preDir == null) ? (other.preDir != null) : !this.preDir.equals(other.preDir)){
             return false;
-        if ((this.street == null) ? (other.street != null) : !this.street.equals(other.street))
+        }
+        if ((this.street == null) ? (other.street != null) : !this.street.equals(other.street)){
             return false;
-        if ((this.streetSuffix == null) ? (other.streetSuffix != null)
-                : !this.streetSuffix.equals(other.streetSuffix))
+        }
+        if ((this.streetSuffix == null) ? (other.streetSuffix != null) : !this.streetSuffix.equals(other.streetSuffix)){
             return false;
-        if ((this.postDir == null) ? (other.postDir != null) : !this.postDir.equals(other.postDir))
+        }
+        if ((this.postDir == null) ? (other.postDir != null) : !this.postDir.equals(other.postDir)){
             return false;
-        if ((this.unitAbbrev == null) ? (other.unitAbbrev != null)
-                : !this.unitAbbrev.equals(other.unitAbbrev))
+        }
+        if ((this.unitAbbrev == null) ? (other.unitAbbrev != null) : !this.unitAbbrev.equals(other.unitAbbrev)){
             return false;
-        if ((this.unit == null) ? (other.unit != null) : !this.unit.equals(other.unit))
+        }
+        if ((this.unit == null) ? (other.unit != null) : !this.unit.equals(other.unit)){
             return false;
+        }
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + (this.houseNum != null ? this.houseNum.hashCode() : 0);
-        hash = 29 * hash + (this.preDir != null ? this.preDir.hashCode() : 0);
-        hash = 29 * hash + (this.street != null ? this.street.hashCode() : 0);
-        hash = 29 * hash + (this.streetSuffix != null ? this.streetSuffix.hashCode() : 0);
-        hash = 29 * hash + (this.postDir != null ? this.postDir.hashCode() : 0);
-        hash = 29 * hash + (this.unitAbbrev != null ? this.unitAbbrev.hashCode() : 0);
-        hash = 29 * hash + (this.unit != null ? this.unit.hashCode() : 0);
-        return hash;
-    }
 
 }
