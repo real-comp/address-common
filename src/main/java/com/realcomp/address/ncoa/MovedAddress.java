@@ -7,10 +7,10 @@ public class MovedAddress {
 
     private Address address;
     private MoveType moveType;
-    private String yearMoved; //YYYY
-    private String monthMoved; //MM
+    private String yearMoved;
+    private String monthMoved;
     private String moveFlag;
-    private String dateChecked; //YYYYMMDD
+    private String dateChecked;
 
     public MovedAddress(){
     }
@@ -42,6 +42,9 @@ public class MovedAddress {
         this.moveType = moveType;
     }
 
+    /**
+     * @return year moved: YYYY
+     */
     public String getYearMoved(){
         return yearMoved;
     }
@@ -50,6 +53,10 @@ public class MovedAddress {
         this.yearMoved = yearMoved;
     }
 
+    /**
+     *
+     * @return month moved: MM
+     */
     public String getMonthMoved(){
         return monthMoved;
     }
@@ -66,6 +73,10 @@ public class MovedAddress {
         this.moveFlag = moveFlag;
     }
 
+    /**
+     *
+     * @return date checked: YYYYMMDD
+     */
     public String getDateChecked(){
         return dateChecked;
     }

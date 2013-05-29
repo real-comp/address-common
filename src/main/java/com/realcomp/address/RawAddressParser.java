@@ -11,14 +11,8 @@ import java.util.regex.Pattern;
  */
 public class RawAddressParser {
 
-    private String zipRegEx;
-    private Pattern zipPattern;
-
-    public RawAddressParser() {
-
-        zipRegEx = "[0-9]{5}([\\-][0-9]{4})?";
-        zipPattern = Pattern.compile(zipRegEx);
-    }
+    private static final int MAX_SPLIT_LINES = 10;
+    private static final Pattern ZIP_PATTERN = Pattern.compile("[0-9]{5}([\\-][0-9]{4})?");
 
     private void splitAddress(RawAddress rawAddress, String splitChar) {
 
@@ -32,7 +26,7 @@ public class RawAddressParser {
                 splitAddr.add(addrPart.trim());
             }
         }
-        if (splitAddr.size() <= 10){
+        if (splitAddr.size() <= MAX_SPLIT_LINES){
             rawAddress.setAddressLines(splitAddr);
         }
     }
@@ -44,7 +38,7 @@ public class RawAddressParser {
         }
         List<String> address = rawAddress.getAddressLines();
         int lastElement = address.size() - 1;
-        Matcher m = zipPattern.matcher(address.get(lastElement));
+        Matcher m = ZIP_PATTERN.matcher(address.get(lastElement));
         if (lastElement > 0 && m.matches()) {
             String zip = address.remove(lastElement);
             rawAddress.setZip(zip);
@@ -55,7 +49,7 @@ public class RawAddressParser {
 
             if (lastSpace > 0) {
                 String lastWord = lastLine.substring(lastSpace + 1);
-                m = zipPattern.matcher(lastLine.substring(lastSpace + 1));
+                m = ZIP_PATTERN.matcher(lastLine.substring(lastSpace + 1));
 
                 if (m.matches()) {
                     rawAddress.setZip(lastWord);

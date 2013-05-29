@@ -4,10 +4,17 @@ package com.realcomp.address;
 
 public enum AddressQuality {
 
-    VALID, //Address was DPV confirmed for both primary and (if present) secondary numbers.
-    UNCONFIRMED_UNIT, //Address was DPV confirmed for the primary number only, and Secondary number information was missing.
-    MISSING_UNIT, //Address was DPV confirmed for the primary number only, and Secondary number information was present but unconfirmed.
-    INVALID, //Both Primary and (if present) Secondary number information failed to DPV Confirm.
+    /** Address was DPV confirmed for both primary and (if present) secondary numbers. */
+    VALID,
+
+    /** Address was DPV confirmed for the primary number only, and Secondary number information was missing. */
+    UNCONFIRMED_UNIT,
+
+    /** Address was DPV confirmed for the primary number only, and Secondary number information was present but unconfirmed. */
+    MISSING_UNIT,
+
+    /** Both Primary and (if present) Secondary number information failed to DPV Confirm. */
+    INVALID,
     UNKNOWN;
 
     public static AddressQuality decode(String code){

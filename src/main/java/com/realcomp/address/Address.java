@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author krenfro
  */
 @XmlRootElement
-public class Address implements Serializable {
+public class Address implements Serializable{
 
     private String address;
     private String city;
@@ -28,7 +28,6 @@ public class Address implements Serializable {
     private AddressQuality quality;
     private boolean vacant = false;
     private ParsedStreetAddress parsed;
-
 
     public Address(){
     }
@@ -56,100 +55,99 @@ public class Address implements Serializable {
 
     }
 
-
-    public String getAddress() {
+    public String getAddress(){
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address){
         this.address = address;
     }
 
-    public AddressQuality getQuality() {
+    public AddressQuality getQuality(){
         return quality;
     }
 
-    public void setQuality(AddressQuality quality) {
+    public void setQuality(AddressQuality quality){
         this.quality = quality;
     }
 
-    public AddressType getType() {
+    public AddressType getType(){
         return type;
     }
 
-    public void setType(AddressType type) {
+    public void setType(AddressType type){
         this.type = type;
     }
 
-    public String getCity() {
+    public String getCity(){
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city){
         this.city = city;
     }
 
-    public String getCrrt() {
+    public String getCrrt(){
         return crrt;
     }
 
-    public void setCrrt(String crrt) {
+    public void setCrrt(String crrt){
         this.crrt = crrt;
     }
 
-    public String getFips() {
+    public String getFips(){
         return fips;
     }
 
-    public void setFips(String fips) {
+    public void setFips(String fips){
         this.fips = fips;
     }
 
-    public Double getLatitude() {
+    public Double getLatitude(){
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(Double latitude){
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public Double getLongitude(){
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(Double longitude){
         this.longitude = longitude;
     }
 
-    public String getState() {
+    public String getState(){
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(String state){
         this.state = state;
     }
 
-    public String getZip5() {
+    public String getZip5(){
         return zip5;
     }
 
-    public void setZip5(String zip5) {
+    public void setZip5(String zip5){
         this.zip5 = zip5;
     }
 
-    public String getZip4() {
+    public String getZip4(){
         return zip4;
     }
 
-    public void setZip4(String zip4) {
+    public void setZip4(String zip4){
         this.zip4 = zip4;
     }
 
-    public LatLongAccuracy getLatLongAccuracy() {
+    public LatLongAccuracy getLatLongAccuracy(){
         return latLongAccuracy;
     }
 
-    public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy) {
+    public void setLatLongAccuracy(LatLongAccuracy latLongAccuracy){
         this.latLongAccuracy = latLongAccuracy;
     }
 
@@ -162,15 +160,16 @@ public class Address implements Serializable {
     }
 
     /**
-     * A delivery point was active in the past, but is currently vacant
-     * (in most cases, unoccupied over 90 days) and not receiving delivery.
+     * A delivery point was active in the past, but is currently vacant (in most cases, unoccupied over 90 days) and not
+     * receiving delivery.
+     *
      * @return
      */
-    public boolean isVacant() {
+    public boolean isVacant(){
         return vacant;
     }
 
-    public void setVacant(boolean vacant) {
+    public void setVacant(boolean vacant){
         this.vacant = vacant;
     }
 
@@ -178,27 +177,27 @@ public class Address implements Serializable {
      *
      * @return delivery point
      */
-    public String getDeliveryPoint() {
+    public String getDeliveryPoint(){
         return deliveryPoint;
     }
 
-    public void setDeliveryPoint(String dp) {
+    public void setDeliveryPoint(String dp){
         this.deliveryPoint = dp;
     }
 
     /**
      * @return vendor dpv flag (e.g., "BB", "CC", "N1", "M1", "M3", ...)
      */
-    public String getDpvFlag() {
+    public String getDpvFlag(){
         return dpvFlag;
     }
 
-    public void setDpvFlag(String dpvFlag) {
+    public void setDpvFlag(String dpvFlag){
         this.dpvFlag = dpvFlag;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         StringAppender sa = new StringAppender(" ");
         sa.append(address);
         sa.append(city);
@@ -207,7 +206,7 @@ public class Address implements Serializable {
         }
         sa.append(state);
         sa.append(zip5);
-        if (fips != null) {
+        if (fips != null){
             sa.append(" [fips:");
             sa.append(fips, "");
             sa.append("]", "");
@@ -238,6 +237,7 @@ public class Address implements Serializable {
         return hash;
     }
 
+    @Generated("NetBeans")
     @Override
     public boolean equals(Object obj){
         if (obj == null){

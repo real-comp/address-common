@@ -9,7 +9,6 @@ import java.util.logging.Logger;
  */
 public enum AddressType {
 
-
     STREET, HIGHRISE, POBOX, RURAL_ROUTE, GENERAL, FIRM, UNKNOWN;
 
     private static final Logger logger = Logger.getLogger(AddressType.class.getName());
@@ -67,11 +66,9 @@ public enum AddressType {
                 return "R";
             case STREET:
                 return "S";
-            case UNKNOWN:
+            default:
                 return "0";
         }
-
-        return "0"; //unknown
     }
 
 }

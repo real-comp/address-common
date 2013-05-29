@@ -9,6 +9,9 @@ package com.realcomp.address;
  */
 public final class OwnerOccupied {
 
+    private static final float TOKEN_MATCH_PERCENTAGE = .40f;
+
+
     private OwnerOccupied(){
     }
 
@@ -52,7 +55,7 @@ public final class OwnerOccupied {
             }
 
             float div = (float) Math.max(tokensA.length, tokensB.length) - 1;
-            if (matches / div >= .40f){
+            if (matches / div >= TOKEN_MATCH_PERCENTAGE){
                 match = true;
             }
         }
