@@ -297,4 +297,25 @@ public class Address implements Serializable{
         }
         return true;
     }
+
+     public int test(){
+        int hash = 7;
+        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
+        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
+        hash = 97 * hash + (this.zip5 != null ? this.zip5.hashCode() : 0);
+        hash = 97 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
+        hash = 97 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
+        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
+        hash = 97 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
+        hash = 97 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
+        hash = 97 * hash + (this.deliveryPoint != null ? this.deliveryPoint.hashCode() : 0);
+        hash = 97 * hash + (this.dpvFlag != null ? this.dpvFlag.hashCode() : 0);
+        hash = 97 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
+        hash = 97 * hash + (this.type != null ? this.type.hashCode() : 0);
+        hash = 97 * hash + (this.quality != null ? this.quality.hashCode() : 0);
+        hash = 97 * hash + (this.vacant ? 1 : 0);
+        hash = 97 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
+        return hash;
+    }
 }

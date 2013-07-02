@@ -1,6 +1,7 @@
 package com.realcomp.address;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 import org.codehaus.jackson.map.AnnotationIntrospector;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig.Feature;
@@ -19,17 +20,16 @@ import static org.junit.Assert.*;
  *
  * @author krenfro
  */
-public class JsonSerializationTest {
-    
-    public JsonSerializationTest() {
+public class JsonSerializationTest{
+
+    public JsonSerializationTest(){
     }
-    
-    
+
     @Test
     public void testAddressSerialization() throws IOException{
-        
-        
-        ObjectMapper jackson = new ObjectMapper();            
+
+
+        ObjectMapper jackson = new ObjectMapper();
         jackson.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
 
         Address expected = new Address();
@@ -42,45 +42,43 @@ public class JsonSerializationTest {
         expected.setLongitude(3d);
         expected.setLatLongAccuracy(LatLongAccuracy.ADDRESS);
         expected.setQuality(AddressQuality.VALID);
-        
+
         ParsedStreetAddress parsed = new ParsedStreetAddress();
         parsed.setStreet("EPHRAIM");
         parsed.setHouseNum("8665");
         parsed.setStreetSuffix("RD");
         expected.setParsed(parsed);
-        
+
         String json = jackson.writeValueAsString(expected);
-        
+
         System.out.println(json);
         Address actual = jackson.readValue(json, Address.class);
-        
+
         assertEquals(expected, actual);
-        
-        
+
+
     }
-    
-    
+
     @Test
     public void testRawAddressSerialization() throws IOException{
-        
-        
-        ObjectMapper jackson = new ObjectMapper();        
-        jackson.getSerializationConfig().with(Feature.REQUIRE_SETTERS_FOR_GETTERS); 
+
+
+        ObjectMapper jackson = new ObjectMapper();
+        jackson.getSerializationConfig().with(Feature.REQUIRE_SETTERS_FOR_GETTERS);
         jackson.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
 
-        
-        
         RawAddress expected = new RawAddress();
         expected.addAddressLine("8665 EPHRAIM RD");
         expected.addAddressLine("AUSTIN, TX  78717");
-        expected.setHint("fips","48491");
+        expected.setHint("fips", "48491");
         String json = jackson.writeValueAsString(expected);
-        
+
         System.out.println(json);
         RawAddress actual = jackson.readValue(json, RawAddress.class);
-        
+
         assertEquals(expected, actual);
-        
-        
+
+
     }
+
 }
