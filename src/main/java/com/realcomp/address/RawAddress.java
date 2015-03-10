@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A street address that needs standardization.
@@ -205,17 +204,11 @@ public class RawAddress implements Serializable {
         }
     }
 
-
     @Override
-    public String toString() {
-
-        return new ToStringBuilder(this).
-                append("lines", lines).
-                append("city", city).
-                append("state", state).
-                append("zip", zip).
-                append("hints", hints).toString();
+    public String toString(){
+        return "RawAddress{" + "lines=" + lines + ", city=" + city + ", state=" + state + ", zip=" + zip + ", hints=" + hints + '}';
     }
+    
 
     public String getId(){
         return id;
