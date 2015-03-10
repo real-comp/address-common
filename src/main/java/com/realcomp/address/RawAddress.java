@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
+import java.util.Objects;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -46,24 +46,24 @@ public class RawAddress implements Serializable {
     public static final String HINT_ZIP = "zip";
     public static final String HINT_JURISCITY = "jurisCity";
 
-
-    protected List<String> lines;
-    protected String city;
-    protected String state;
-    protected String zip;
-    protected Map<String,String> hints;
+    private String id;
+    private List<String> lines;
+    private String city;
+    private String state;
+    private String zip;
+    private Map<String,String> hints;
 
     public RawAddress() {
-        lines = new ArrayList<String>();
+        lines = new ArrayList<>();
     }
 
     public RawAddress(RawAddress copy) {
-        lines = new ArrayList<String>(copy.lines);
+        lines = new ArrayList<>(copy.lines);
         city = copy.city;
         state = copy.state;
         zip = copy.zip;
         if (copy.hints != null){
-            hints = new HashMap<String,String>();
+            hints = new HashMap<>();
             hints.putAll(copy.hints);
         }
     }
@@ -217,19 +217,26 @@ public class RawAddress implements Serializable {
                 append("hints", hints).toString();
     }
 
-    @Generated("NetBeans")
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
+
     @Override
     public int hashCode(){
-        int hash = 3;
-        hash = 79 * hash + (this.lines != null ? this.lines.hashCode() : 0);
-        hash = 79 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 79 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 79 * hash + (this.zip != null ? this.zip.hashCode() : 0);
-        hash = 79 * hash + (this.hints != null ? this.hints.hashCode() : 0);
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(this.id);
+        hash = 61 * hash + Objects.hashCode(this.lines);
+        hash = 61 * hash + Objects.hashCode(this.city);
+        hash = 61 * hash + Objects.hashCode(this.state);
+        hash = 61 * hash + Objects.hashCode(this.zip);
+        hash = 61 * hash + Objects.hashCode(this.hints);
         return hash;
     }
 
-    @Generated("NetBeans")
     @Override
     public boolean equals(Object obj){
         if (obj == null){
@@ -239,19 +246,22 @@ public class RawAddress implements Serializable {
             return false;
         }
         final RawAddress other = (RawAddress) obj;
-        if (this.lines != other.lines && (this.lines == null || !this.lines.equals(other.lines))){
+        if (!Objects.equals(this.id, other.id)){
             return false;
         }
-        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)){
+        if (!Objects.equals(this.lines, other.lines)){
             return false;
         }
-        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)){
+        if (!Objects.equals(this.city, other.city)){
             return false;
         }
-        if ((this.zip == null) ? (other.zip != null) : !this.zip.equals(other.zip)){
+        if (!Objects.equals(this.state, other.state)){
             return false;
         }
-        if (this.hints != other.hints && (this.hints == null || !this.hints.equals(other.hints))){
+        if (!Objects.equals(this.zip, other.zip)){
+            return false;
+        }
+        if (!Objects.equals(this.hints, other.hints)){
             return false;
         }
         return true;

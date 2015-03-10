@@ -1,17 +1,17 @@
 package com.realcomp.address;
 
 import java.io.Serializable;
-import javax.annotation.Generated;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author BGoering
  * @author krenfro
  */
 @XmlRootElement
 public class Address implements Serializable{
 
+    private String id;
     private String address;
     private String city;
     private String state;
@@ -33,6 +33,7 @@ public class Address implements Serializable{
     }
 
     public Address(Address copy){
+        id = copy.id;
         address = copy.address;
         city = copy.city;
         state = copy.state;
@@ -55,6 +56,14 @@ public class Address implements Serializable{
 
     }
 
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
+    
     public String getAddress(){
         return address;
     }
@@ -214,30 +223,29 @@ public class Address implements Serializable{
         return sa.toString().trim();
     }
 
-    @Generated("NetBeans")
     @Override
     public int hashCode(){
         int hash = 7;
-        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
-        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 97 * hash + (this.zip5 != null ? this.zip5.hashCode() : 0);
-        hash = 97 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
-        hash = 97 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
-        hash = 97 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
-        hash = 97 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
-        hash = 97 * hash + (this.deliveryPoint != null ? this.deliveryPoint.hashCode() : 0);
-        hash = 97 * hash + (this.dpvFlag != null ? this.dpvFlag.hashCode() : 0);
-        hash = 97 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
-        hash = 97 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = 97 * hash + (this.quality != null ? this.quality.hashCode() : 0);
-        hash = 97 * hash + (this.vacant ? 1 : 0);
-        hash = 97 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.address);
+        hash = 19 * hash + Objects.hashCode(this.city);
+        hash = 19 * hash + Objects.hashCode(this.state);
+        hash = 19 * hash + Objects.hashCode(this.zip5);
+        hash = 19 * hash + Objects.hashCode(this.zip4);
+        hash = 19 * hash + Objects.hashCode(this.crrt);
+        hash = 19 * hash + Objects.hashCode(this.fips);
+        hash = 19 * hash + Objects.hashCode(this.latitude);
+        hash = 19 * hash + Objects.hashCode(this.longitude);
+        hash = 19 * hash + Objects.hashCode(this.deliveryPoint);
+        hash = 19 * hash + Objects.hashCode(this.dpvFlag);
+        hash = 19 * hash + Objects.hashCode(this.latLongAccuracy);
+        hash = 19 * hash + Objects.hashCode(this.type);
+        hash = 19 * hash + Objects.hashCode(this.quality);
+        hash = 19 * hash + (this.vacant ? 1 : 0);
+        hash = 19 * hash + Objects.hashCode(this.parsed);
         return hash;
     }
 
-    @Generated("NetBeans")
     @Override
     public boolean equals(Object obj){
         if (obj == null){
@@ -247,37 +255,40 @@ public class Address implements Serializable{
             return false;
         }
         final Address other = (Address) obj;
-        if ((this.address == null) ? (other.address != null) : !this.address.equals(other.address)){
+        if (!Objects.equals(this.id, other.id)){
             return false;
         }
-        if ((this.city == null) ? (other.city != null) : !this.city.equals(other.city)){
+        if (!Objects.equals(this.address, other.address)){
             return false;
         }
-        if ((this.state == null) ? (other.state != null) : !this.state.equals(other.state)){
+        if (!Objects.equals(this.city, other.city)){
             return false;
         }
-        if ((this.zip5 == null) ? (other.zip5 != null) : !this.zip5.equals(other.zip5)){
+        if (!Objects.equals(this.state, other.state)){
             return false;
         }
-        if ((this.zip4 == null) ? (other.zip4 != null) : !this.zip4.equals(other.zip4)){
+        if (!Objects.equals(this.zip5, other.zip5)){
             return false;
         }
-        if ((this.crrt == null) ? (other.crrt != null) : !this.crrt.equals(other.crrt)){
+        if (!Objects.equals(this.zip4, other.zip4)){
             return false;
         }
-        if ((this.fips == null) ? (other.fips != null) : !this.fips.equals(other.fips)){
+        if (!Objects.equals(this.crrt, other.crrt)){
             return false;
         }
-        if (this.latitude != other.latitude && (this.latitude == null || !this.latitude.equals(other.latitude))){
+        if (!Objects.equals(this.fips, other.fips)){
             return false;
         }
-        if (this.longitude != other.longitude && (this.longitude == null || !this.longitude.equals(other.longitude))){
+        if (!Objects.equals(this.latitude, other.latitude)){
             return false;
         }
-        if ((this.deliveryPoint == null) ? (other.deliveryPoint != null) : !this.deliveryPoint.equals(other.deliveryPoint)){
+        if (!Objects.equals(this.longitude, other.longitude)){
             return false;
         }
-        if ((this.dpvFlag == null) ? (other.dpvFlag != null) : !this.dpvFlag.equals(other.dpvFlag)){
+        if (!Objects.equals(this.deliveryPoint, other.deliveryPoint)){
+            return false;
+        }
+        if (!Objects.equals(this.dpvFlag, other.dpvFlag)){
             return false;
         }
         if (this.latLongAccuracy != other.latLongAccuracy){
@@ -292,30 +303,12 @@ public class Address implements Serializable{
         if (this.vacant != other.vacant){
             return false;
         }
-        if (this.parsed != other.parsed && (this.parsed == null || !this.parsed.equals(other.parsed))){
+        if (!Objects.equals(this.parsed, other.parsed)){
             return false;
         }
         return true;
     }
 
-     public int test(){
-        int hash = 7;
-        hash = 97 * hash + (this.address != null ? this.address.hashCode() : 0);
-        hash = 97 * hash + (this.city != null ? this.city.hashCode() : 0);
-        hash = 97 * hash + (this.state != null ? this.state.hashCode() : 0);
-        hash = 97 * hash + (this.zip5 != null ? this.zip5.hashCode() : 0);
-        hash = 97 * hash + (this.zip4 != null ? this.zip4.hashCode() : 0);
-        hash = 97 * hash + (this.crrt != null ? this.crrt.hashCode() : 0);
-        hash = 97 * hash + (this.fips != null ? this.fips.hashCode() : 0);
-        hash = 97 * hash + (this.latitude != null ? this.latitude.hashCode() : 0);
-        hash = 97 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
-        hash = 97 * hash + (this.deliveryPoint != null ? this.deliveryPoint.hashCode() : 0);
-        hash = 97 * hash + (this.dpvFlag != null ? this.dpvFlag.hashCode() : 0);
-        hash = 97 * hash + (this.latLongAccuracy != null ? this.latLongAccuracy.hashCode() : 0);
-        hash = 97 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = 97 * hash + (this.quality != null ? this.quality.hashCode() : 0);
-        hash = 97 * hash + (this.vacant ? 1 : 0);
-        hash = 97 * hash + (this.parsed != null ? this.parsed.hashCode() : 0);
-        return hash;
-    }
+    
+    
 }
