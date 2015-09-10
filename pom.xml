@@ -58,8 +58,8 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:svn:svn+ssh://dev.real-comp.com/opt/usr/share/rcsvn/address-common/trunk</connection>
-        <developerConnection>scm:svn:svn+ssh://dev.real-comp.com/opt/usr/share/rcsvn/address-common/trunk</developerConnection>
-        <url>http://fisheye.real-comp.com/browse/svn/address-common/trunk</url>
+        <connection>scm:git:ssh://git@bitbucket.org/real-comp/address-common.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org/real-comp/address-common.git</developerConnection>
+        <url>https://bitbucket.org/real-comp/address-common</url>
     </scm>
 </project>
