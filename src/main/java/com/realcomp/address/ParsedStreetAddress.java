@@ -1,7 +1,9 @@
 package com.realcomp.address;
 
-import java.io.Serializable;
 import javax.annotation.Generated;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ParsedStreetAddress implements Serializable {
@@ -83,6 +85,33 @@ public class ParsedStreetAddress implements Serializable {
         this.unit = unit;
     }
 
+
+    public Map<String,String> asMap(){
+        Map<String,String> map = new HashMap<>();
+        map.put("houseNum", houseNum);
+        map.put("preDir", preDir);
+        map.put("street", street);
+        map.put("streetSuffix", streetSuffix);
+        map.put("postDir", postDir);
+        map.put("unitAbbrev", unitAbbrev);
+        map.put("unit", unit);
+        return map;
+    }
+
+    public static ParsedStreetAddress fromMap(Map<String,String> map){
+        ParsedStreetAddress parsed = new ParsedStreetAddress();
+        if (map != null){
+            parsed.setHouseNum(map.get("houseNum"));
+            parsed.setPreDir(map.get("preDir"));
+            parsed.setStreet(map.get("street"));
+            parsed.setStreetSuffix(map.get("streetSuffix"));
+            parsed.setUnitAbbrev(map.get("unitAbbrev"));
+            parsed.setUnit(map.get("unit"));
+            parsed.setPostDir(map.get("postDir"));
+        }
+
+        return parsed;
+    }
 
 
     @Override

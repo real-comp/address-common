@@ -1,8 +1,10 @@
 package com.realcomp.address;
 
-import java.io.Serializable;
-import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author BGoering
@@ -203,6 +205,76 @@ public class Address implements Serializable{
 
     public void setDpvFlag(String dpvFlag){
         this.dpvFlag = dpvFlag;
+    }
+
+    public Map<String,String> asMap(){
+        Map<String,String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("address", address);
+        map.put("city", city);
+        map.put("state", state);
+        map.put("zip5", zip5);
+        map.put("zip4", zip4);
+        map.put("crrt", crrt);
+        map.put("fips", fips);
+        map.put("latitude", latitude == null ? null : latitude.toString());
+        map.put("longitude", longitude == null ? null : longitude.toString());
+        map.put("deliveryPoint", deliveryPoint);
+        map.put("dpvFlag", dpvFlag);
+        map.put("latLongAccuracy", latLongAccuracy == null ? null : latLongAccuracy.name());
+        map.put("type", type == null ? null : type.name());
+        map.put("quality", quality == null ? null : quality.name());
+        map.put("vacant", Boolean.toString(vacant));
+
+        if (parsed != null){
+            map.putAll(parsed.asMap());
+        }
+
+        return map;
+    }
+
+    public static Address fromMap(Map<String,String> map){
+        Address address = new Address();
+        address.setId(map.get("id"));
+        address.setAddress(map.get("address"));
+        address.setCity(map.get("city"));
+        address.setState(map.get("state"));
+        address.setZip5(map.get("zip5"));
+        address.setZip4(map.get("zip4"));
+        address.setCrrt(map.get("crrt"));
+        address.setFips(map.get("fips"));
+        String s = map.get("latitude");
+        if (s != null && !s.isEmpty()){
+            address.setLatitude(Double.parseDouble(s));
+        }
+        s = map.get("longitude");
+        if (s != null && !s.isEmpty()){
+            address.setLongitude(Double.parseDouble(s));
+        }
+        address.setDeliveryPoint(map.get("deliveryPoint"));
+        address.setDpvFlag(map.get("dpvFlag"));
+        s = map.get("latLongAccuracy");
+        if (s != null && !s.isEmpty()){
+            address.setLatLongAccuracy(LatLongAccuracy.valueOf(s));
+        }
+        s = map.get("type");
+        if (s != null && !s.isEmpty()){
+            address.setType(AddressType.valueOf(s));
+        }
+        s = map.get("quality");
+        if (s != null && !s.isEmpty()){
+            address.setQuality(AddressQuality.valueOf(s));
+        }
+        s = map.get("vacant");
+        if (s != null && !s.isEmpty()){
+            address.setVacant(Boolean.valueOf(s));
+        }
+        ParsedStreetAddress parsed = ParsedStreetAddress.fromMap(map);
+        if (!parsed.toString().trim().isEmpty()) {
+            address.setParsed(parsed);
+        }
+
+        return address;
     }
 
     @Override
