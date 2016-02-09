@@ -207,7 +207,7 @@ public class Address implements Serializable{
         this.dpvFlag = dpvFlag;
     }
 
-    public Map<String,String> asMap(){
+    public Map<String,String> toMap(){
         Map<String,String> map = new HashMap<>();
         map.put("id", id);
         map.put("address", address);
@@ -227,45 +227,45 @@ public class Address implements Serializable{
         map.put("vacant", Boolean.toString(vacant));
 
         if (parsed != null){
-            map.putAll(parsed.asMap());
+            map.putAll(parsed.toMap());
         }
 
         return map;
     }
 
-    public static Address fromMap(Map<String,String> map){
+    public static Address fromMap(Map map){
         Address address = new Address();
-        address.setId(map.get("id"));
-        address.setAddress(map.get("address"));
-        address.setCity(map.get("city"));
-        address.setState(map.get("state"));
-        address.setZip5(map.get("zip5"));
-        address.setZip4(map.get("zip4"));
-        address.setCrrt(map.get("crrt"));
-        address.setFips(map.get("fips"));
-        String s = map.get("latitude");
+        address.setId(asString(map.get("id")));
+        address.setAddress(asString(map.get("address")));
+        address.setCity(asString(map.get("city")));
+        address.setState(asString(map.get("state")));
+        address.setZip5(asString(map.get("zip5")));
+        address.setZip4(asString(map.get("zip4")));
+        address.setCrrt(asString(map.get("crrt")));
+        address.setFips(asString(map.get("fips")));
+        String s = asString(map.get("latitude"));
         if (s != null && !s.isEmpty()){
             address.setLatitude(Double.parseDouble(s));
         }
-        s = map.get("longitude");
+        s =asString( map.get("longitude"));
         if (s != null && !s.isEmpty()){
             address.setLongitude(Double.parseDouble(s));
         }
-        address.setDeliveryPoint(map.get("deliveryPoint"));
-        address.setDpvFlag(map.get("dpvFlag"));
-        s = map.get("latLongAccuracy");
+        address.setDeliveryPoint(asString(map.get("deliveryPoint")));
+        address.setDpvFlag(asString(map.get("dpvFlag")));
+        s = asString(map.get("latLongAccuracy"));
         if (s != null && !s.isEmpty()){
             address.setLatLongAccuracy(LatLongAccuracy.valueOf(s));
         }
-        s = map.get("type");
+        s = asString(map.get("type"));
         if (s != null && !s.isEmpty()){
             address.setType(AddressType.valueOf(s));
         }
-        s = map.get("quality");
+        s = asString(map.get("quality"));
         if (s != null && !s.isEmpty()){
             address.setQuality(AddressQuality.valueOf(s));
         }
-        s = map.get("vacant");
+        s = asString(map.get("vacant"));
         if (s != null && !s.isEmpty()){
             address.setVacant(Boolean.valueOf(s));
         }
@@ -276,6 +276,11 @@ public class Address implements Serializable{
 
         return address;
     }
+
+    private static String asString(Object value){
+        return value == null ? null : value.toString();
+    }
+
 
     @Override
     public String toString(){

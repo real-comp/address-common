@@ -86,7 +86,7 @@ public class ParsedStreetAddress implements Serializable {
     }
 
 
-    public Map<String,String> asMap(){
+    public Map<String,String> toMap(){
         Map<String,String> map = new HashMap<>();
         map.put("houseNum", houseNum);
         map.put("preDir", preDir);
@@ -98,19 +98,23 @@ public class ParsedStreetAddress implements Serializable {
         return map;
     }
 
-    public static ParsedStreetAddress fromMap(Map<String,String> map){
+    public static ParsedStreetAddress fromMap(Map map){
         ParsedStreetAddress parsed = new ParsedStreetAddress();
         if (map != null){
-            parsed.setHouseNum(map.get("houseNum"));
-            parsed.setPreDir(map.get("preDir"));
-            parsed.setStreet(map.get("street"));
-            parsed.setStreetSuffix(map.get("streetSuffix"));
-            parsed.setUnitAbbrev(map.get("unitAbbrev"));
-            parsed.setUnit(map.get("unit"));
-            parsed.setPostDir(map.get("postDir"));
+            parsed.setHouseNum(asString(map.get("houseNum")));
+            parsed.setPreDir(asString(map.get("preDir")));
+            parsed.setStreet(asString(map.get("street")));
+            parsed.setStreetSuffix(asString(map.get("streetSuffix")));
+            parsed.setUnitAbbrev(asString(map.get("unitAbbrev")));
+            parsed.setUnit(asString(map.get("unit")));
+            parsed.setPostDir(asString(map.get("postDir")));
         }
 
         return parsed;
+    }
+
+    private static String asString(Object value){
+        return value == null ? null : value.toString();
     }
 
 
