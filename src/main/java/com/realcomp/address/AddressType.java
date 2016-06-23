@@ -20,7 +20,7 @@ public enum AddressType {
      */
     public static AddressType decode(String code){
 
-        AddressType type = null;
+        AddressType type = AddressType.UNKNOWN;
 
         if (code.equals("S")){
             type = AddressType.STREET;
@@ -48,7 +48,6 @@ public enum AddressType {
         }
         else if (!code.trim().isEmpty()){
             logger.log(Level.WARNING, "Unhandled AddressType: [{0}]", code);
-            type = AddressType.UNKNOWN;
         }
 
         return type;

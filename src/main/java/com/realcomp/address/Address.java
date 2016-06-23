@@ -25,9 +25,9 @@ public class Address implements Serializable{
     private Double longitude;
     private String deliveryPoint;
     private String dpvFlag;
-    private LatLongAccuracy latLongAccuracy;
-    private AddressType type;
-    private AddressQuality quality;
+    private LatLongAccuracy latLongAccuracy = LatLongAccuracy.UNKNOWN;
+    private AddressType type = AddressType.UNKNOWN;
+    private AddressQuality quality = AddressQuality.UNKNOWN;
     private boolean vacant = false;
     private ParsedStreetAddress parsed;
 

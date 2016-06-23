@@ -6,5 +6,5 @@ package com.realcomp.address;
  */
 public enum LatLongAccuracy {
 
-    ADDRESS, ZIP_PLUS_4, ZIP_5_DIGIT
+    ADDRESS, ZIP_PLUS_4, ZIP_5_DIGIT, UNKNOWN
 }
