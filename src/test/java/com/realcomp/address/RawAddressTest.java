@@ -30,11 +30,15 @@ public class RawAddressTest{
     public void testCopyConstructor(){
         RawAddress original = new RawAddress();
         original.setHint("asdf","1234");
+        original.setId("12");
 
         assertEquals("1234", original.getHint("asdf"));
+        assertEquals("12", original.getId());
+
 
         RawAddress copy = new RawAddress(original);
         assertEquals("1234", copy.getHint("asdf"));
+        assertEquals("12", copy.getId());
 
     }
 }

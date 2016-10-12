@@ -57,6 +57,7 @@ public class RawAddress implements Serializable {
     }
 
     public RawAddress(RawAddress copy) {
+        id = copy.id;
         lines = new ArrayList<>(copy.lines);
         city = copy.city;
         state = copy.state;
