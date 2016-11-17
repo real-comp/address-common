@@ -1,19 +1,82 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.realcomp.address</groupId>
+    <groupId>com.real-comp</groupId>
     <artifactId>address-common</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.4-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <name>address-common</name>
+    <url>https://github.com/real-comp/address-common</url>
+    <organization>
+        <name>Real-Comp</name>
+        <url>http://www.real-comp.com</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>krenfro</id>
+            <name>Kyle Renfro</name>
+            <email>kylerenfro@gmail.com</email>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git@github.com:real-comp/address-common.git</connection>
+        <developerConnection>scm:git:git@github.com:real-comp/address-common.git</developerConnection>
+        <url>git@github.com:real-comp/address-common.git</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <name>Nexus Staging Repository</name>
+            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
                 </configuration>
             </plugin>
         </plugins>
@@ -26,9 +89,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.realcomp.names</groupId>
-            <artifactId>realcomp-names</artifactId>
-            <version>4.0.0</version>
+            <groupId>com.real-comp</groupId>
+            <artifactId>names-common</artifactId>
+            <version>1.0.0</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -45,21 +108,4 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <url>https://nexus.real-comp.com/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus</id>
-            <url>https://nexus.real-comp.com/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <scm>
-        <connection>scm:git:ssh://git@bitbucket.org/real-comp/address-common.git</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/real-comp/address-common.git</developerConnection>
-        <url>https://bitbucket.org/real-comp/address-common</url>
-    </scm>
 </project>
