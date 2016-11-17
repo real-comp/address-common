@@ -6,6 +6,7 @@
     <version>0.2.0-SNAPSHOT</version>
     <name>address-common</name>
     <url>https://github.com/real-comp/address-common</url>
+    <description>An collection of POJOs dealing with Addresses used throughout real-comp projects.</description>
     <organization>
         <name>Real-Comp</name>
         <url>http://www.real-comp.com</url>
